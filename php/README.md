@@ -107,9 +107,16 @@ php/
 
 ## Content
 
-Every headline, service, project and FAQ lives in **`includes/data.php`**. The React app
-keeps the same content in `src/data/*.js`. **When you change copy, update both** so the two
-editions do not drift.
+Every headline, service, project and FAQ lives in **`includes/data.php`**, which is
+**generated** — do not edit it by hand. The React app keeps the source content in
+`src/data/*.js`; regenerate the PHP copy after any copy change:
+
+```bash
+npm run content:sync
+```
+
+That keeps service deliverables, project write-ups, process outputs and FAQs identical in
+both editions instead of slowly drifting apart.
 
 Projects are all labelled **“Concept build”** on purpose. Do not add client names, logos,
 testimonials, awards or performance numbers unless they are real and verifiable — the

@@ -33,8 +33,8 @@ if (isset($_SERVER['SCRIPT_FILENAME'])
 
         <div class="footer-col">
             <h2>Services</h2>
-            <?php foreach ($DATA['services'] as $service): ?>
-                <a href="service.php?slug=<?= e($service['slug']) ?>"><?= e($service['title']) ?></a>
+            <?php foreach ($DATA['services'] as $footerService): ?>
+                <a href="service.php?slug=<?= e($footerService['slug']) ?>"><?= e($footerService['title']) ?></a>
             <?php endforeach; ?>
         </div>
 

@@ -12,9 +12,10 @@ if (isset($_SERVER['SCRIPT_FILENAME'])
 
 /**
  * Shared content for the PHP edition.
- * Keep this in sync with src/data/*.js when copy changes.
+ *
+ * GENERATED FILE — do not edit by hand.
+ * Source of truth: src/data/*.js; regenerate with `npm run content:sync`.
  */
-
 
 return [
     'services' => [
@@ -34,10 +35,32 @@ return [
                 'Analytics, events and conversion tracking',
             ],
             'approach' => [
-                ['title' => 'Define the job of the page', 'body' => 'We agree what each page must make a visitor understand, believe and do before a single visual is designed.'],
-                ['title' => 'Design in the browser', 'body' => 'Layouts are prototyped at real breakpoints so spacing, type and motion survive contact with real content.'],
-                ['title' => 'Engineer to a budget', 'body' => 'JavaScript weight, image strategy and Core Web Vitals targets are set up front and checked on every build.'],
-                ['title' => 'Ship, measure, refine', 'body' => 'We launch with analytics in place, then iterate on the sections that actually influence enquiries.'],
+                [
+                    'title' => 'Define the job of the page',
+                    'body' => 'We agree what each page must make a visitor understand, believe and do before a single visual is designed.',
+                ],
+                [
+                    'title' => 'Design in the browser',
+                    'body' => 'Layouts are prototyped at real breakpoints so spacing, type and motion survive contact with real content.',
+                ],
+                [
+                    'title' => 'Engineer to a budget',
+                    'body' => 'JavaScript weight, image strategy and Core Web Vitals targets are set up front and checked on every build.',
+                ],
+                [
+                    'title' => 'Ship, measure, refine',
+                    'body' => 'We launch with analytics in place, then iterate on the sections that actually influence enquiries.',
+                ],
+            ],
+            'stack' => [
+                'React',
+                'Next.js',
+                'Astro',
+                'TypeScript',
+                'Three.js',
+                'GSAP',
+                'Sanity',
+                'Shopify',
             ],
             'outcomes' => [
                 'A site that reflects the quality of your product',
@@ -45,10 +68,19 @@ return [
                 'Content your team can update without a developer',
                 'A measurable path from landing to enquiry',
             ],
-            'stack' => ['React', 'Next.js', 'Astro', 'TypeScript', 'Three.js', 'GSAP', 'Sanity'],
             'faqs' => [
-                ['q' => 'Do you work with an existing design?', 'a' => 'Yes. If you have a finished design system we can build directly from it. If the design only exists as flat frames, we usually refine interaction, spacing and mobile behaviour as part of the build.'],
-                ['q' => 'Can you take over an existing site?', 'a' => 'Often. We start with a short technical audit covering performance, accessibility, SEO basics and maintainability, then recommend whether to refactor or rebuild.'],
+                [
+                    'q' => 'Do you work with an existing design?',
+                    'a' => 'Yes. If you have a finished design system we can build directly from it. If the design only exists in Figma as flat frames, we usually refine interaction, spacing and mobile behaviour as part of the build.',
+                ],
+                [
+                    'q' => 'Can you take over an existing site?',
+                    'a' => 'Often. We start with a short technical audit covering performance, accessibility, SEO basics and maintainability, then recommend whether to refactor or rebuild. We will tell you when a rebuild is not worth the money.',
+                ],
+                [
+                    'q' => 'What happens after launch?',
+                    'a' => 'You can take the code and run. Most clients keep us on a light monthly retainer for improvements, new sections and performance monitoring.',
+                ],
             ],
         ],
         [
@@ -67,10 +99,32 @@ return [
                 'Evaluation suites, logging and cost controls',
             ],
             'approach' => [
-                ['title' => 'Pick a problem worth automating', 'body' => 'We map the workflow, the volume of work and the cost of a wrong answer before choosing a model.'],
-                ['title' => 'Ground it in your data', 'body' => 'Content is cleaned, chunked, embedded and permissioned so answers cite real sources rather than guessing.'],
-                ['title' => 'Build the loop, not the demo', 'body' => 'Real usage needs review queues, escalation paths, fallbacks and audit logs. We ship those with the model.'],
-                ['title' => 'Measure and contain cost', 'body' => 'Test sets, latency targets and token budgets keep quality predictable as usage grows.'],
+                [
+                    'title' => 'Pick a problem worth automating',
+                    'body' => 'We map the workflow, the volume of work and the cost of a wrong answer before choosing a model.',
+                ],
+                [
+                    'title' => 'Ground it in your data',
+                    'body' => 'Content is cleaned, chunked, embedded and permissioned so answers cite real sources rather than guessing.',
+                ],
+                [
+                    'title' => 'Build the loop, not the demo',
+                    'body' => 'Real usage needs review queues, escalation paths, fallbacks and audit logs. We ship those with the model.',
+                ],
+                [
+                    'title' => 'Measure and contain cost',
+                    'body' => 'Test sets, latency targets and token budgets keep quality predictable as usage grows.',
+                ],
+            ],
+            'stack' => [
+                'OpenAI',
+                'Anthropic',
+                'LangChain',
+                'pgvector',
+                'Pinecone',
+                'Python',
+                'Node.js',
+                'n8n',
             ],
             'outcomes' => [
                 'Fewer repetitive tasks for your team',
@@ -78,10 +132,19 @@ return [
                 'Answers that cite your documents instead of inventing them',
                 'A system you can audit and improve over time',
             ],
-            'stack' => ['OpenAI', 'Anthropic', 'LangChain', 'pgvector', 'Python', 'Node.js', 'n8n'],
             'faqs' => [
-                ['q' => 'Will the AI make things up?', 'a' => 'Any language model can. We reduce it with retrieval, strict prompting, source citations and refusal behaviour, then measure it against a test set. For high-stakes answers we add human approval before anything is sent.'],
-                ['q' => 'Do we need our own model?', 'a' => 'Rarely. Most businesses get better results from a hosted frontier model plus good retrieval than from a custom-trained model.'],
+                [
+                    'q' => 'Will the AI make things up?',
+                    'a' => 'Any language model can. We reduce it with retrieval, strict prompting, source citations and refusal behaviour, then measure it against a test set. For high-stakes answers we add human approval before anything is sent.',
+                ],
+                [
+                    'q' => 'Do we need our own model?',
+                    'a' => 'Rarely. Most businesses get better results from a hosted frontier model plus good retrieval than from a custom-trained model. We will only recommend fine-tuning when the evidence supports it.',
+                ],
+                [
+                    'q' => 'How do you handle private data?',
+                    'a' => 'We work with providers that do not train on your data by default, keep credentials server-side, limit retrieval by permission, and agree a retention policy before the build starts.',
+                ],
             ],
         ],
         [
@@ -90,7 +153,7 @@ return [
             'title' => 'SEO & Digital Growth',
             'kicker' => 'Compounding organic demand',
             'summary' => 'Technical SEO, content architecture and conversion work that compounds — measured in qualified traffic and enquiries.',
-            'description' => 'We treat search as an engineering and editorial system: crawlable foundations, a content architecture mapped to real intent, and pages designed to convert the visitors they attract.',
+            'description' => 'We treat search as an engineering and editorial system: crawlable foundations, a content architecture mapped to real intent, and pages designed to convert the visitors they attract. No tricks, no thin pages at scale without a reason.',
             'deliverables' => [
                 'Technical audit and crawl budget fixes',
                 'Keyword and intent mapping by revenue potential',
@@ -100,10 +163,31 @@ return [
                 'Reporting tied to enquiries, not vanity rankings',
             ],
             'approach' => [
-                ['title' => 'Audit the foundation', 'body' => 'Crawlability, indexation, site speed, duplicate content and structured data are checked before content investment.'],
-                ['title' => 'Map intent to pages', 'body' => 'We map queries to the page that should own them, then remove or merge pages that compete with each other.'],
-                ['title' => 'Build a content engine', 'body' => 'Templates, briefs and editorial standards make consistent publishing possible without diluting quality.'],
-                ['title' => 'Convert the traffic', 'body' => 'Ranking is only useful if the page moves someone. We optimise layout, proof and calls to action together.'],
+                [
+                    'title' => 'Audit the foundation',
+                    'body' => 'Crawlability, indexation, site speed, duplicate content and structured data are checked before content investment.',
+                ],
+                [
+                    'title' => 'Map intent to pages',
+                    'body' => 'We map queries to the page that should own them, then remove or merge pages that compete with each other.',
+                ],
+                [
+                    'title' => 'Build a content engine',
+                    'body' => 'Templates, briefs and editorial standards make consistent publishing possible without diluting quality.',
+                ],
+                [
+                    'title' => 'Convert the traffic',
+                    'body' => 'Ranking is only useful if the page moves someone. We optimise layout, proof and calls to action together.',
+                ],
+            ],
+            'stack' => [
+                'Ahrefs',
+                'Semrush',
+                'Screaming Frog',
+                'GSC',
+                'GA4',
+                'Schema.org',
+                'Looker Studio',
             ],
             'outcomes' => [
                 'A site search engines can crawl and trust',
@@ -111,10 +195,19 @@ return [
                 'A publishing process your team can sustain',
                 'Reporting that connects search to pipeline',
             ],
-            'stack' => ['Ahrefs', 'Semrush', 'Screaming Frog', 'GSC', 'GA4', 'Schema.org'],
             'faqs' => [
-                ['q' => 'How long does SEO take?', 'a' => 'Technical fixes can show movement in weeks. Content and authority typically need three to six months before trends are meaningful.'],
-                ['q' => 'Can you guarantee rankings?', 'a' => 'No. We can guarantee the work: audits, fixes, architecture and measurement. Rankings are controlled by search engines, not us.'],
+                [
+                    'q' => 'How long does SEO take?',
+                    'a' => 'Technical fixes can show movement in weeks. Content and authority typically need three to six months before trends are meaningful. Anyone promising page-one rankings in 30 days is guessing or misleading you.',
+                ],
+                [
+                    'q' => 'Do you write content?',
+                    'a' => 'We produce briefs and can write technical pages ourselves. For subject-heavy editorial, we work with your in-house experts and edit for search and clarity.',
+                ],
+                [
+                    'q' => 'Can you guarantee rankings?',
+                    'a' => 'No. We can guarantee the work: audits, fixes, architecture and measurement. Rankings are controlled by search engines, not us.',
+                ],
             ],
         ],
         [
@@ -123,7 +216,7 @@ return [
             'title' => 'Cold Email Outreach',
             'kicker' => 'Outbound that respects the inbox',
             'summary' => 'Outbound infrastructure and sequences built on accurate targeting, clean deliverability and relevant messaging.',
-            'description' => 'We build outreach systems that reach the right people with a message worth reading. That means verified contact data, authenticated domains, warmed inboxes, short sequences and honest reporting.',
+            'description' => 'We build outreach systems that reach the right people with a message worth reading. That means verified contact data, authenticated domains, warmed inboxes, short sequences and honest reporting. We do not send bulk spam or scrape contact lists.',
             'deliverables' => [
                 'ICP and segment research',
                 'Contact verification and list hygiene',
@@ -133,10 +226,31 @@ return [
                 'CRM sync and reporting',
             ],
             'approach' => [
-                ['title' => 'Narrow the audience', 'body' => 'A tight segment with a real problem beats a large list. We define who should hear from you and why now.'],
-                ['title' => 'Set up the infrastructure', 'body' => 'Secondary domains, authentication, warm-up and volume limits are handled before the first email is sent.'],
-                ['title' => 'Write something human', 'body' => 'Short, specific emails that reference the recipient’s context and make one clear ask.'],
-                ['title' => 'Route and learn', 'body' => 'Replies go to a human. Positive responses sync to your CRM, and we refine segments from real objection patterns.'],
+                [
+                    'title' => 'Narrow the audience',
+                    'body' => 'A tight segment with a real problem beats a large list. We define who should hear from you and why now.',
+                ],
+                [
+                    'title' => 'Set up the infrastructure',
+                    'body' => 'Secondary domains, authentication, warm-up and volume limits are handled before the first email is sent.',
+                ],
+                [
+                    'title' => 'Write something human',
+                    'body' => 'Short, specific emails that reference the recipient’s context and make one clear ask. No fake follow-ups, no false urgency.',
+                ],
+                [
+                    'title' => 'Route and learn',
+                    'body' => 'Replies go to a human. Positive responses sync to your CRM, and we refine segments from real objection patterns.',
+                ],
+            ],
+            'stack' => [
+                'Instantly',
+                'Smartlead',
+                'Apollo',
+                'Clay',
+                'HubSpot',
+                'Pipedrive',
+                'Google Workspace',
             ],
             'outcomes' => [
                 'Deliverability protected before volume increases',
@@ -144,10 +258,19 @@ return [
                 'Replies handled by a person, not a bot',
                 'Clear visibility into what is working',
             ],
-            'stack' => ['Instantly', 'Smartlead', 'Apollo', 'Clay', 'HubSpot', 'Google Workspace'],
             'faqs' => [
-                ['q' => 'Is cold email legal?', 'a' => 'It depends on the jurisdiction and how you send it. We follow applicable rules such as GDPR legitimate-interest requirements and CAN-SPAM identity and opt-out rules, keep volumes reasonable, and maintain suppression lists.'],
-                ['q' => 'Do you guarantee meetings?', 'a' => 'No. We guarantee the system: verified data, authenticated infrastructure, relevant copy and honest reporting.'],
+                [
+                    'q' => 'Is cold email legal?',
+                    'a' => 'It depends on the jurisdiction and how you send it. We follow applicable rules such as GDPR legitimate-interest requirements and CAN-SPAM identity and opt-out rules, keep volumes reasonable, and maintain suppression lists.',
+                ],
+                [
+                    'q' => 'How many emails will you send?',
+                    'a' => 'Far fewer than most agencies propose. We scale slowly, watch reply and bounce signals daily, and keep each inbox within limits that protect your domain reputation.',
+                ],
+                [
+                    'q' => 'Do you guarantee meetings?',
+                    'a' => 'No. We guarantee the system: verified data, authenticated infrastructure, relevant copy and honest reporting. Meeting volume depends on your offer, market and capacity to follow up.',
+                ],
             ],
         ],
         [
@@ -156,7 +279,7 @@ return [
             'title' => 'SaaS & Software Development',
             'kicker' => 'Products built to last',
             'summary' => 'Multi-tenant products, internal tools and APIs engineered for real usage — auth, billing, permissions and observability included.',
-            'description' => 'We design and build software products from first sketch to production: data model, permissions, billing, dashboards, integrations and deployment.',
+            'description' => 'We design and build software products from first sketch to production: data model, permissions, billing, dashboards, integrations and deployment. The goal is a maintainable product your team can extend, not a prototype that collapses under real usage.',
             'deliverables' => [
                 'Product scoping and technical discovery',
                 'Data modelling and API design',
@@ -166,10 +289,32 @@ return [
                 'CI/CD, monitoring and environments',
             ],
             'approach' => [
-                ['title' => 'Scope the smallest useful product', 'body' => 'We define the core loop that delivers value, and defer everything that does not prove it.'],
-                ['title' => 'Design the data first', 'body' => 'Schemas, tenancy and permissions are decided early because they are expensive to change later.'],
-                ['title' => 'Build in vertical slices', 'body' => 'Each slice ships from database to interface so you can review working software every week.'],
-                ['title' => 'Harden for production', 'body' => 'Error tracking, backups, rate limits and environment separation are part of the launch, not a later favour.'],
+                [
+                    'title' => 'Scope the smallest useful product',
+                    'body' => 'We define the core loop that delivers value, and defer everything that does not prove it.',
+                ],
+                [
+                    'title' => 'Design the data first',
+                    'body' => 'Schemas, tenancy and permissions are decided early because they are expensive to change later.',
+                ],
+                [
+                    'title' => 'Build in vertical slices',
+                    'body' => 'Each slice ships from database to interface so you can review working software every week.',
+                ],
+                [
+                    'title' => 'Harden for production',
+                    'body' => 'Error tracking, backups, rate limits and environment separation are part of the launch, not a later favour.',
+                ],
+            ],
+            'stack' => [
+                'Next.js',
+                'React',
+                'Node.js',
+                'PostgreSQL',
+                'Prisma',
+                'Stripe',
+                'Supabase',
+                'AWS',
             ],
             'outcomes' => [
                 'A product your team can operate and extend',
@@ -177,10 +322,19 @@ return [
                 'Deployments that are boring and repeatable',
                 'Clear documentation and handover',
             ],
-            'stack' => ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma', 'Stripe', 'Supabase'],
             'faqs' => [
-                ['q' => 'Can you work with our existing codebase?', 'a' => 'Yes. We start with a short review of architecture, test coverage and deployment, then agree a plan.'],
-                ['q' => 'Who owns the code?', 'a' => 'You do. Repositories, infrastructure accounts and third-party services are set up in your name from the start.'],
+                [
+                    'q' => 'Can you work with our existing codebase?',
+                    'a' => 'Yes. We start with a short review of architecture, test coverage and deployment, then agree a plan. If the codebase is a risk to your business we will say so clearly.',
+                ],
+                [
+                    'q' => 'Who owns the code?',
+                    'a' => 'You do. Repositories, infrastructure accounts and third-party services are set up in your name from the start.',
+                ],
+                [
+                    'q' => 'Do you provide ongoing support?',
+                    'a' => 'We offer retainers for feature work, maintenance and monitoring. Handover is also a first-class outcome — with documentation, runbooks and a walkthrough.',
+                ],
             ],
         ],
         [
@@ -199,10 +353,32 @@ return [
                 'Team training and documentation',
             ],
             'approach' => [
-                ['title' => 'Map the real process', 'body' => 'We sit with the people doing the work and document what actually happens, including the workarounds.'],
-                ['title' => 'Remove before automating', 'body' => 'Steps that exist for no reason get deleted first. Automating waste just makes it faster.'],
-                ['title' => 'Connect the systems', 'body' => 'Webhooks, queues and scheduled jobs replace copy-paste with a traceable flow that has one source of truth.'],
-                ['title' => 'Make failure visible', 'body' => 'Alerts, retries and a run log mean a broken integration gets noticed by you, not by a customer.'],
+                [
+                    'title' => 'Map the real process',
+                    'body' => 'We sit with the people doing the work and document what actually happens, including the workarounds.',
+                ],
+                [
+                    'title' => 'Remove before automating',
+                    'body' => 'Steps that exist for no reason get deleted first. Automating waste just makes it faster.',
+                ],
+                [
+                    'title' => 'Connect the systems',
+                    'body' => 'Webhooks, queues and scheduled jobs replace copy-paste with a traceable flow that has one source of truth.',
+                ],
+                [
+                    'title' => 'Make failure visible',
+                    'body' => 'Alerts, retries and a run log mean a broken integration gets noticed by you, not by a customer.',
+                ],
+            ],
+            'stack' => [
+                'n8n',
+                'Make',
+                'Zapier',
+                'Airtable',
+                'Notion',
+                'HubSpot',
+                'Google Workspace',
+                'PostgreSQL',
             ],
             'outcomes' => [
                 'Fewer manual handoffs and copy-paste errors',
@@ -210,10 +386,19 @@ return [
                 'Faster internal turnaround on routine requests',
                 'Processes documented so they survive staff changes',
             ],
-            'stack' => ['n8n', 'Make', 'Airtable', 'Notion', 'HubSpot', 'PostgreSQL'],
             'faqs' => [
-                ['q' => 'Do we need to replace our tools?', 'a' => 'Usually not. We connect what you already pay for. Replacement is only recommended when a tool is the actual source of the bottleneck.'],
-                ['q' => 'What if an automation breaks?', 'a' => 'Every flow ships with logging and alerts, plus a documented manual fallback so work can continue while it is fixed.'],
+                [
+                    'q' => 'Do we need to replace our tools?',
+                    'a' => 'Usually not. We connect what you already pay for. Replacement is only recommended when a tool is the actual source of the bottleneck.',
+                ],
+                [
+                    'q' => 'What if an automation breaks?',
+                    'a' => 'Every flow ships with logging and alerts, plus a documented manual fallback so work can continue while it is fixed.',
+                ],
+                [
+                    'q' => 'How do you price automation work?',
+                    'a' => 'We scope flows individually and quote fixed prices. Where the requirements are genuinely unclear, we start with a paid discovery.',
+                ],
             ],
         ],
     ],
@@ -235,8 +420,17 @@ return [
                 'Forecast view with scenario comparison and confidence bands',
                 'Account health timeline aggregating product and support signals',
                 'Weekly digest generation with exportable summaries',
+                'Keyboard-first navigation and command palette',
             ],
-            'stack' => ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Stripe', 'Tailwind CSS'],
+            'stack' => [
+                'Next.js',
+                'TypeScript',
+                'PostgreSQL',
+                'Prisma',
+                'Stripe',
+                'Tailwind CSS',
+                'Vercel',
+            ],
             'outcome' => [
                 'A single source of truth for pipeline and forecast data',
                 'Weekly reporting generated instead of assembled',
@@ -259,8 +453,16 @@ return [
                 'Responsive image pipeline with art direction',
                 'Persistent cart with optimistic updates',
                 'Editorial modules for merchandising and stories',
+                'Checkout handoff with clear error states',
             ],
-            'stack' => ['Astro', 'React', 'Shopify Storefront API', 'TypeScript', 'Tailwind CSS'],
+            'stack' => [
+                'Astro',
+                'React',
+                'Shopify Storefront API',
+                'TypeScript',
+                'Tailwind CSS',
+                'Cloudflare',
+            ],
             'outcome' => [
                 'Product pages that remain usable on slow networks',
                 'A merchandising model non-technical teams can operate',
@@ -283,8 +485,17 @@ return [
                 'Source-highlighted review interface',
                 'Approval routing with SLA timers',
                 'Model evaluation dashboard built from real corrections',
+                'Audit log and export to downstream systems',
             ],
-            'stack' => ['Python', 'FastAPI', 'OpenAI', 'pgvector', 'React', 'PostgreSQL'],
+            'stack' => [
+                'Python',
+                'FastAPI',
+                'OpenAI',
+                'pgvector',
+                'React',
+                'PostgreSQL',
+                'Docker',
+            ],
             'outcome' => [
                 'Routine documents reach a reviewer pre-filled, not blank',
                 'Every automated value traceable to a source page',
@@ -299,7 +510,7 @@ return [
             'status' => 'Concept build',
             'tagline' => 'A content system that scales pages without scaling thin content.',
             'summary' => 'A programmatic SEO concept for a marketplace: structured pages generated from real inventory, with editorial rules that prevent near-duplicate filler.',
-            'challenge' => 'Programmatic SEO usually fails in one of two ways: too few pages to matter, or thousands of near-identical pages that search engines ignore.',
+            'challenge' => 'Programmatic SEO usually fails in one of two ways: too few pages to matter, or thousands of near-identical pages that search engines ignore. The difference is whether each page has a genuine reason to exist.',
             'approach' => 'We started with a data sufficiency test. A page is generated only when the underlying record has enough verified attributes to answer the query. Everything else waits or is merged into a parent page.',
             'built' => [
                 'Data sufficiency scoring before page generation',
@@ -307,8 +518,16 @@ return [
                 'Internal linking graph based on entity relationships',
                 'Automated quality checks in the publish pipeline',
                 'Structured data and canonical strategy',
+                'Search Console reporting segmented by template',
             ],
-            'stack' => ['Next.js', 'Python', 'PostgreSQL', 'Schema.org', 'GA4'],
+            'stack' => [
+                'Next.js',
+                'Python',
+                'PostgreSQL',
+                'Schema.org',
+                'GA4',
+                'Search Console API',
+            ],
             'outcome' => [
                 'Page creation tied to evidence, not ambition',
                 'Crawlable architecture that stays understandable',
@@ -331,8 +550,16 @@ return [
                 'Sequence builder with reply detection',
                 'Deliverability monitoring and DNS guidance',
                 'Reply triage with owner assignment',
+                'Reporting on positive replies, not open rates',
             ],
-            'stack' => ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Instantly API'],
+            'stack' => [
+                'React',
+                'Node.js',
+                'PostgreSQL',
+                'Redis',
+                'Instantly API',
+                'Google Workspace API',
+            ],
             'outcome' => [
                 'Sending behaviour that protects domain reputation',
                 'Copy requirements enforced before launch',
@@ -349,7 +576,12 @@ return [
             'duration' => '1–2 weeks',
             'summary' => 'Understand the business before touching the interface.',
             'description' => 'We interview the people who will use and maintain the work, review analytics and audit what already exists. The output is a short, opinionated brief: the problem, the constraints and how success will be judged.',
-            'outputs' => ['Stakeholder interviews', 'Technical and content audit', 'Success criteria', 'Scope and estimate'],
+            'outputs' => [
+                'Stakeholder interviews',
+                'Technical and content audit',
+                'Success criteria',
+                'Scope and estimate',
+            ],
         ],
         [
             'number' => '02',
@@ -358,7 +590,12 @@ return [
             'duration' => '2–3 weeks',
             'summary' => 'Resolve the experience in the browser, not just in frames.',
             'description' => 'Architecture, wireframes and visual direction move together. We prototype key interactions at real breakpoints so typography, spacing and motion are validated before engineering begins.',
-            'outputs' => ['Sitemap and page blueprints', 'Design system', 'Interactive prototype', 'Content plan'],
+            'outputs' => [
+                'Sitemap and page blueprints',
+                'Design system',
+                'Interactive prototype',
+                'Content plan',
+            ],
         ],
         [
             'number' => '03',
@@ -367,7 +604,12 @@ return [
             'duration' => '3–8 weeks',
             'summary' => 'Build in reviewable slices with quality gates.',
             'description' => 'Work ships to a staging environment in weekly slices. Performance budgets, accessibility checks and responsive behaviour are verified continuously rather than at the end.',
-            'outputs' => ['Production front end', 'CMS and integrations', 'Weekly staging builds', 'QA and accessibility pass'],
+            'outputs' => [
+                'Production front end',
+                'CMS and integrations',
+                'Weekly staging builds',
+                'QA and accessibility pass',
+            ],
         ],
         [
             'number' => '04',
@@ -376,7 +618,12 @@ return [
             'duration' => '3–5 days',
             'summary' => 'Launch without drama, with the boring parts handled.',
             'description' => 'Redirects, analytics, metadata, backups and rollback plans are prepared before launch day. We deploy, verify and stay close for the first days of real traffic.',
-            'outputs' => ['Launch checklist', 'Redirect map', 'Analytics verification', 'Monitoring and rollback plan'],
+            'outputs' => [
+                'Launch checklist',
+                'Redirect map',
+                'Analytics verification',
+                'Monitoring and rollback plan',
+            ],
         ],
         [
             'number' => '05',
@@ -385,7 +632,12 @@ return [
             'duration' => 'Ongoing',
             'summary' => 'Use real behaviour to improve what matters.',
             'description' => 'After launch we look at how people actually use the site or product. Changes are prioritised by impact, not by what is easiest to redesign.',
-            'outputs' => ['Performance monitoring', 'Conversion review', 'Experiment backlog', 'Monthly summary'],
+            'outputs' => [
+                'Performance monitoring',
+                'Conversion review',
+                'Experiment backlog',
+                'Monthly summary',
+            ],
         ],
     ],
 
@@ -399,9 +651,21 @@ return [
     ],
 
     'faqs' => [
-        ['q' => 'How do projects usually start?', 'a' => 'With a short conversation and a written brief. If the fit is right, we scope the work in a fixed-price discovery, then move into design and build. You receive a written estimate before anything is committed.'],
-        ['q' => 'What does a typical project cost?', 'a' => 'Focused marketing sites generally start around $3,000–$8,000. Product and SaaS builds typically range from $12,000 to $40,000 depending on scope. Automation and AI work is scoped per workflow. You will always receive a fixed quote before work begins.'],
-        ['q' => 'How do you communicate during a build?', 'a' => 'A shared workspace, a weekly written update and a staging link that always reflects the latest work. Calls are scheduled when a decision is needed, not as a status ritual.'],
-        ['q' => 'Do you work with clients outside India?', 'a' => 'Yes. We work remotely with clients across time zones and schedule overlap where it matters. Async written communication is the default.'],
+        [
+            'q' => 'How do projects usually start?',
+            'a' => 'With a short conversation and a written brief. If the fit is right, we scope the work in a fixed-price discovery, then move into design and build. You receive a written estimate before anything is committed.',
+        ],
+        [
+            'q' => 'What does a typical project cost?',
+            'a' => 'Focused marketing sites generally start around $3,000–$8,000. Product and SaaS builds typically range from $12,000 to $40,000 depending on scope. Automation and AI work is scoped per workflow. You will always receive a fixed quote before work begins.',
+        ],
+        [
+            'q' => 'How do you communicate during a build?',
+            'a' => 'A shared workspace, a weekly written update and a staging link that always reflects the latest work. Calls are scheduled when a decision is needed, not as a status ritual.',
+        ],
+        [
+            'q' => 'Do you work with clients outside India?',
+            'a' => 'Yes. We work remotely with clients across time zones and schedule overlap where it matters. Async written communication is the default.',
+        ],
     ],
 ];

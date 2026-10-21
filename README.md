@@ -197,6 +197,12 @@ tighten `server.allowedHosts` for your own environment.
 
 See [`php/README.md`](php/README.md) — upload, `chmod 775 storage`, done.
 
+The PHP copy is generated: React data is the source of truth.
+
+```bash
+npm run content:sync   # rewrite php/includes/data.php from src/data/*.js
+```
+
 To review the PHP edition locally without installing PHP, run it inside WebAssembly:
 
 ```bash

@@ -53,12 +53,12 @@ $isCurrent = static fn (array $files): string =>
             <div class="nav-drop">
                 <a class="nav-link<?= nav_state(['services.php', 'service.php']) ?>" href="services.php" aria-haspopup="true"<?= $isCurrent(['services.php', 'service.php']) ?>>Services</a>
                 <div class="nav-drop__panel">
-                    <?php foreach ($DATA['services'] as $service): ?>
-                        <a href="service.php?slug=<?= e($service['slug']) ?>">
-                            <span class="nav-drop__index"><?= e($service['index']) ?></span>
+                    <?php foreach ($DATA['services'] as $navService): ?>
+                        <a href="service.php?slug=<?= e($navService['slug']) ?>">
+                            <span class="nav-drop__index"><?= e($navService['index']) ?></span>
                             <span>
-                                <strong><?= e($service['title']) ?></strong>
-                                <small><?= e($service['kicker']) ?></small>
+                                <strong><?= e($navService['title']) ?></strong>
+                                <small><?= e($navService['kicker']) ?></small>
                             </span>
                         </a>
                     <?php endforeach; ?>
@@ -90,8 +90,8 @@ $isCurrent = static fn (array $files): string =>
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
             <div class="mobile-nav__services">
-                <?php foreach ($DATA['services'] as $service): ?>
-                    <a href="service.php?slug=<?= e($service['slug']) ?>"><?= e($service['title']) ?></a>
+                <?php foreach ($DATA['services'] as $navService): ?>
+                    <a href="service.php?slug=<?= e($navService['slug']) ?>"><?= e($navService['title']) ?></a>
                 <?php endforeach; ?>
             </div>
             <a class="btn btn--block" href="contact.php">Start a project</a>
