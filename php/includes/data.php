@@ -1,10 +1,20 @@
 <?php
+declare(strict_types=1);
+
+// Refuse direct web access to partials — these files expect to be included.
+if (isset($_SERVER['SCRIPT_FILENAME'])
+    && realpath($_SERVER['SCRIPT_FILENAME']) === realpath(__FILE__)) {
+    http_response_code(404);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Not found';
+    exit;
+}
+
 /**
  * Shared content for the PHP edition.
  * Keep this in sync with src/data/*.js when copy changes.
  */
 
-declare(strict_types=1);
 
 return [
     'services' => [

@@ -1,4 +1,13 @@
 <?php
+// Refuse direct web access to partials — these files expect to be included.
+if (isset($_SERVER['SCRIPT_FILENAME'])
+    && realpath($_SERVER['SCRIPT_FILENAME']) === realpath(__FILE__)) {
+    http_response_code(404);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Not found';
+    exit;
+}
+
 /** Shared footer (PHP edition). */
 ?>
 <footer class="site-footer">

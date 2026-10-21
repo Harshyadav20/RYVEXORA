@@ -197,6 +197,17 @@ tighten `server.allowedHosts` for your own environment.
 
 See [`php/README.md`](php/README.md) — upload, `chmod 775 storage`, done.
 
+To review the PHP edition locally without installing PHP, run it inside WebAssembly:
+
+```bash
+npm i --no-save @php-wasm/node   # one-off, not a project dependency
+npm run php:preview              # http://localhost:8080
+```
+
+`tools/php-preview.mjs` mirrors `php/` into a wasm filesystem, serves assets from disk,
+blocks `/storage`, maps `/work` → `work.php`, and returns real 404s for unknown slugs.
+It is a review tool only — deploy against a real PHP 8.1+ host.
+
 ---
 
 ## Editing content

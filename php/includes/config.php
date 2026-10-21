@@ -1,4 +1,15 @@
 <?php
+declare(strict_types=1);
+
+// Refuse direct web access to partials — these files expect to be included.
+if (isset($_SERVER['SCRIPT_FILENAME'])
+    && realpath($_SERVER['SCRIPT_FILENAME']) === realpath(__FILE__)) {
+    http_response_code(404);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Not found';
+    exit;
+}
+
 /**
  * RYVEXORA — PHP edition configuration.
  *
@@ -6,7 +17,6 @@
  * See php/README.md for setup notes.
  */
 
-declare(strict_types=1);
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

@@ -57,6 +57,18 @@ location ~* \.(jsonl|log|md)$ { deny all; }
 
 ---
 
+## Local preview without PHP
+
+If PHP is not installed, the edition can be reviewed through WebAssembly:
+
+```bash
+npm i --no-save @php-wasm/node   # repository root, one-off
+npm run php:preview              # http://localhost:8080
+```
+
+This uses `tools/php-preview.mjs` and runs the real templates on PHP 8.3 (wasm). It is a
+convenience for review — production should use a normal PHP 8.1+ host.
+
 ## Structure
 
 ```
@@ -71,13 +83,16 @@ php/
 ├── contact.php          Inquiry form: CSRF, validation, JSONL storage, PRG success
 ├── privacy.php          Privacy notice
 ├── 404.php              Error page
+├── robots.txt           Crawl rules (storage/ excluded)
+├── sitemap.xml          PHP URLs incl. slug query strings
 ├── .htaccess            Security headers, directory listing off, data blocked
 ├── includes/
 │   ├── config.php       Session, constants, escaping + helper functions, $DATA
 │   ├── data.php         All site content (single source of truth)
 │   ├── ui.php           render_mock / render_service_card / breadcrumbs / faqs / cta
 │   ├── header.php       Document head + fixed navigation
-│   └── footer.php       Footer, wordmark, scripts
+│   ├── footer.php       Footer, wordmark, scripts
+│   └── .htaccess        Denies direct access to included partials
 ├── assets/
 │   ├── site.css         Complete standalone stylesheet
 │   ├── site.js          Nav, reveals, back-to-top, submit guard

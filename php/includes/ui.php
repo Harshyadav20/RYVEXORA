@@ -1,9 +1,19 @@
 <?php
+declare(strict_types=1);
+
+// Refuse direct web access to partials — these files expect to be included.
+if (isset($_SERVER['SCRIPT_FILENAME'])
+    && realpath($_SERVER['SCRIPT_FILENAME']) === realpath(__FILE__)) {
+    http_response_code(404);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Not found';
+    exit;
+}
+
 /**
  * Small HTML helpers shared by the PHP templates.
  */
 
-declare(strict_types=1);
 
 /** Abstract project preview built from divs — replaces the React UI mock. */
 function render_mock(array $project, bool $tall = false): void
