@@ -2307,8 +2307,13 @@
 }
 
 @media (max-width: 860px) {
-  .demo-frame__note {
+  /* The illustrative-brand label never disappears — it is the honesty device. */
+  .demo-frame__dots {
     display: none;
+  }
+
+  .demo-frame__label {
+    font-size: 0.56rem;
   }
 
   .med-hero,
