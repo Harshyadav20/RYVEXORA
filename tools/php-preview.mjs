@@ -11,9 +11,9 @@
  * has zero requirements, and this tool is only for local review. Production
  * hosting should use real PHP 8.1+ (see php/README.md).
  *
- * Note: the contact form writes `inquiries.jsonl` inside the WebAssembly
- * filesystem, not to php/storage on disk — the submit flow works end to end,
- * but nothing is persisted between runs. Real PHP writes to php/storage.
+ * Note: PHP writes `inquiries.jsonl` inside the WebAssembly filesystem. After
+ * each successful inquiry the file is mirrored to php/storage/inquiries.jsonl
+ * so you can inspect exactly what a real deployment would store.
  */
 import http from 'node:http';
 import fs from 'node:fs';
@@ -192,6 +192,19 @@ const server = http.createServer(async (request, response) => {
     }
 
     response.statusCode = exists ? result.httpStatusCode || 200 : 404;
+
+    // Mirror the inquiry log out of wasm so the stored record is inspectable.
+    if (request.method === 'POST' && target === 'contact.php' && response.statusCode >= 300 && response.statusCode < 400) {
+      try {
+        const log = await php.readFileAsText(`${SITE}/storage/inquiries.jsonl`);
+        if (log) {
+          await fsp.mkdir(path.join(ROOT, 'storage'), { recursive: true });
+          await fsp.writeFile(path.join(ROOT, 'storage', 'inquiries.jsonl'), log, 'utf8');
+        }
+      } catch (error) {
+        console.warn('Could not mirror the inquiry log:', error.message);
+      }
+    }
     for (const [key, values] of Object.entries(result.headers || {})) {
       if (key === 'x-powered-by') continue;
       response.setHeader(key, key === 'set-cookie' ? values : values.join(', '));

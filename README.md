@@ -206,9 +206,9 @@ npm run php:preview              # http://localhost:8080
 
 `tools/php-preview.mjs` mirrors `php/` into a wasm filesystem, serves assets from disk,
 blocks `/storage`, maps `/work` → `work.php`, and returns real 404s for unknown slugs.
-The contact form works end to end, but inquiries are written inside the wasm filesystem
-rather than `php/storage`, so they do not persist. This is a review tool only — deploy
-against a real PHP 8.1+ host.
+The contact form works end to end; after a successful inquiry the JSON-lines log is
+mirrored to `php/storage/inquiries.jsonl` (git-ignored) so you can inspect the record.
+This is a review tool only — deploy against a real PHP 8.1+ host.
 
 ---
 

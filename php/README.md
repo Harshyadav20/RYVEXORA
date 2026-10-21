@@ -68,8 +68,8 @@ npm run php:preview              # http://localhost:8080
 
 This uses `tools/php-preview.mjs` and runs the real templates on PHP 8.3 (wasm). The
 contact form validates, redirects and shows the confirmation exactly as it would in
-production, but the JSON-lines file is written inside the wasm filesystem and is not
-persisted. It is a convenience for review — production should use a normal PHP 8.1+ host.
+production, and each successful inquiry is mirrored to `storage/inquiries.jsonl` on disk.
+It is a convenience for review — production should use a normal PHP 8.1+ host.
 
 ## Structure
 
