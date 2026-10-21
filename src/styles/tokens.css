@@ -1,0 +1,71 @@
+/* ============================================================
+   RYVEXORA — design tokens
+   ============================================================ */
+:root {
+  /* Palette */
+  --bg: #07090d;
+  --bg-2: #0b0f16;
+  --surface: #111722;
+  --surface-2: #0d131c;
+  --surface-3: #151d2b;
+  --blue: #246bfd;
+  --violet: #8b5cf6;
+  --cyan: #36d9ff;
+  --text: #f4f7ff;
+  --muted: #a2adbf;
+  --faint: #71809a;
+  --danger: #ff7a7a;
+
+  --line: rgba(244, 247, 255, 0.08);
+  --line-strong: rgba(244, 247, 255, 0.16);
+  --line-glow: rgba(54, 217, 255, 0.32);
+
+  --blue-soft: rgba(36, 107, 253, 0.14);
+  --violet-soft: rgba(139, 92, 246, 0.14);
+  --cyan-soft: rgba(54, 217, 255, 0.12);
+
+  /* Typography */
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', 'Inter Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --fs-hero: clamp(2.35rem, 8.4vw, 7.4rem);
+  --fs-display: clamp(2.4rem, 6vw, 5.6rem);
+  --fs-h1: clamp(2.2rem, 4.6vw, 4.2rem);
+  --fs-h2: clamp(1.9rem, 3.6vw, 3.2rem);
+  --fs-h3: clamp(1.25rem, 1.9vw, 1.65rem);
+  --fs-lead: clamp(1.02rem, 1.25vw, 1.24rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  /* Layout */
+  --container: 1320px;
+  --container-wide: 1560px;
+  --gutter: clamp(20px, 4.4vw, 64px);
+  --header-h: 76px;
+  --section-y: clamp(76px, 9vw, 148px);
+
+  /* Shape */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 26px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-fast: 0.24s;
+  --dur: 0.45s;
+
+  color-scheme: dark;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-h: 66px;
+  }
+}
