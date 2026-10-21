@@ -48,6 +48,8 @@ Full instructions are in [`php/README.md`](php/README.md).
 | `/` | `src/pages/Home.jsx` | 3D hero, four-stage scroll story, capability marquee, six services, typography sequence, process rail, featured work, contact |
 | `/services` | `src/pages/Services.jsx` | All six disciplines, engagement models |
 | `/services/:slug` | `src/pages/ServiceDetail.jsx` | Context, deliverables, approach, outcomes, stack, FAQ |
+| `/formats` | `src/pages/Formats.jsx` | Format library: four vertical compositions, comparison table, honesty note |
+| `/formats/:slug` | `src/pages/FormatDetail.jsx` | One format: full illustrative composition, what we change, what we never do, SEO notes |
 | `/work` | `src/pages/Work.jsx` | Project archive |
 | `/work/:slug` | `src/pages/WorkDetail.jsx` | Challenge, approach, build, what it demonstrates |
 | `/process` | `src/pages/Process.jsx` | Five stages with defined outputs |
@@ -56,7 +58,27 @@ Full instructions are in [`php/README.md`](php/README.md).
 | `/privacy` | `src/pages/Privacy.jsx` | Privacy notice |
 | `*` | `src/pages/NotFound.jsx` | 404 |
 
-Unknown service or project slugs render a real "not found" state rather than an empty template.
+Unknown service, format or project slugs render a real "not found" state rather than an
+empty template.
+
+### Format library
+
+`/formats` answers a different question from `/services`: not *what we build*, but *what
+the page is shaped like* when the visitor is a patient, a product buyer, a client of a
+maison or a brand commissioning a studio. Four complete compositions share one design
+system:
+
+| Format | Demo brand | Primary ask |
+| --- | --- | --- |
+| 01 Medical & Clinics | NORTHBEAM DENTAL | Book an appointment |
+| 02 Digital Products & SaaS | LEDGERLINE | Book a demo |
+| 03 Luxury & Hospitality | MAISON AUREL | Request the lookbook |
+| 04 Creators & Studios | STUDIO NOOR | Check availability |
+
+Content for all four lives in `src/data/formats.js` (React) and `php/includes/data.php`
+(mirrored by `npm run content:sync`). Every demo brand is fictional and labelled as such
+inside the demo frame; no client logos, metrics or testimonials are invented. The demo
+opens at a viewport-like height and "Open full page" releases it to its natural height.
 
 ---
 

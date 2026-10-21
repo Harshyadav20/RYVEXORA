@@ -27,6 +27,7 @@ if (isset($_SERVER['SCRIPT_FILENAME'])
             <a href="about.php">About</a>
             <a href="process.php">How we work</a>
             <a href="work.php">Selected work</a>
+            <a href="formats.php">Formats</a>
             <a href="contact.php">Contact</a>
             <a href="privacy.php">Privacy</a>
         </div>

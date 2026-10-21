@@ -13,6 +13,7 @@ export const site = {
 
 export const nav = [
   { label: 'Work', to: '/work' },
+  { label: 'Formats', to: '/formats' },
   { label: 'Services', to: '/services', mega: true },
   { label: 'Process', to: '/process' },
   { label: 'About', to: '/about' },

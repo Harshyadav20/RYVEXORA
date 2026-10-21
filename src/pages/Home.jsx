@@ -20,6 +20,7 @@ import ProjectPreview from '../components/ProjectPreview.jsx';
 import ProcessRail from '../components/ProcessRail.jsx';
 import WordSequence from '../components/WordSequence.jsx';
 import ContactSection from '../components/ContactSection.jsx';
+import FormatsTeaser from '../components/FormatsTeaser.jsx';
 import ErrorBoundary from '../components/ErrorBoundary.jsx';
 
 const HeroScene = lazy(() => import('../three/HeroScene.jsx'));
@@ -369,6 +370,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FormatsTeaser />
 
       <WordSequence />
 

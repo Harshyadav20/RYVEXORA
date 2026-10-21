@@ -80,6 +80,8 @@ php/
 ├── service.php          Service detail (?slug=web-development) with 404 fallback
 ├── work.php             Project archive
 ├── project.php          Project case study (?slug=atlas-revenue-os) with 404 fallback
+├── formats.php          Format library + comparison table
+├── format.php           Format detail (?slug=medical) with 404 fallback
 ├── process.php          Five-stage process + FAQ
 ├── about.php            Studio, principles, honest fit
 ├── contact.php          Inquiry form: CSRF, validation, JSONL storage, PRG success
@@ -91,7 +93,8 @@ php/
 ├── includes/
 │   ├── config.php       Session, constants, escaping + helper functions, $DATA
 │   ├── data.php         All site content (single source of truth)
-│   ├── ui.php           render_mock / render_service_card / breadcrumbs / faqs / cta
+│   ├── ui.php           render_mock / cards / breadcrumbs / faqs / cta / format demo frame
+│   ├── formats/         One demo composition per format (medical, digital-product, luxury, creator)
 │   ├── header.php       Document head + fixed navigation
 │   ├── footer.php       Footer, wordmark, scripts
 │   └── .htaccess        Denies direct access to included partials
@@ -107,7 +110,7 @@ php/
 
 ## Content
 
-Every headline, service, project and FAQ lives in **`includes/data.php`**, which is
+Every headline, service, project, format and FAQ lives in **`includes/data.php`**, which is
 **generated** — do not edit it by hand. The React app keeps the source content in
 `src/data/*.js`; regenerate the PHP copy after any copy change:
 

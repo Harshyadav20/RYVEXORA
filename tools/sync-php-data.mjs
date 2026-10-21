@@ -23,6 +23,7 @@ const { projects } = await import(`${ROOT}/src/data/projects.js`);
 const { processSteps } = await import(`${ROOT}/src/data/process.js`);
 const { budgets } = await import(`${ROOT}/src/data/site.js`);
 const { faqs } = await import(`${ROOT}/src/data/process.js`);
+const { formats, formatPrinciples, formatComparison } = await import(`${ROOT}/src/data/formats.js`);
 
 /* ------------------------------------------------------------------ */
 /* Serialisation                                                       */
@@ -99,6 +100,29 @@ const processShape = processSteps.map((step) => ({
 
 const faqShape = faqs.map((faq) => ({ q: faq.q, a: faq.a }));
 
+const formatShape = formats.map((format) => ({
+  slug: format.slug,
+  index: format.index,
+  name: format.name,
+  audience: format.audience,
+  kicker: format.kicker,
+  accent: format.accent,
+  accent_soft: format.accentSoft,
+  headline: format.headline,
+  summary: format.summary,
+  primary_action: format.primaryAction,
+  key_pages: format.keyPages,
+  motion: format.motion,
+  changes: format.changes,
+  avoid: format.avoid,
+  seo: format.seo,
+  demo: format.demo,
+}));
+
+const principleShape = formatPrinciples.map((item) => ({ title: item.title, body: item.body }));
+
+const comparisonShape = formatComparison.map((row) => ({ label: row.label, values: row.values }));
+
 /* ------------------------------------------------------------------ */
 /* Write                                                              */
 /* ------------------------------------------------------------------ */
@@ -132,6 +156,12 @@ return [
     'budgets' => ${php(budgets, 1)},
 
     'faqs' => ${php(faqShape, 1)},
+
+    'formats' => ${php(formatShape, 1)},
+
+    'format_principles' => ${php(principleShape, 1)},
+
+    'format_comparison' => ${php(comparisonShape, 1)},
 ];
 `;
 
@@ -147,5 +177,5 @@ fs.writeFileSync(target, header, 'utf8');
 
 console.log(`Wrote ${path.relative(ROOT, target)}`);
 console.log(
-  `  ${serviceShape.length} services · ${projectShape.length} projects · ${processShape.length} process stages · ${budgets.length} budgets · ${faqShape.length} FAQs`,
+  `  ${serviceShape.length} services · ${projectShape.length} projects · ${processShape.length} process stages · ${budgets.length} budgets · ${faqShape.length} FAQs · ${formatShape.length} formats`,
 );

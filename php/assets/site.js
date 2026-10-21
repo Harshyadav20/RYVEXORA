@@ -49,6 +49,19 @@
     });
   }
 
+  /* Format demo frames — fit to viewport, or open the full composition */
+  document.querySelectorAll('[data-demo-toggle]').forEach(function (button) {
+    var frame = button.closest('.demo-frame');
+    var label = button.querySelector('[data-demo-toggle-label]');
+    if (!frame) return;
+
+    button.addEventListener('click', function () {
+      var expanded = frame.classList.toggle('is-expanded');
+      button.setAttribute('aria-expanded', String(expanded));
+      if (label) label.textContent = expanded ? 'Fit to frame' : 'Open full page';
+    });
+  });
+
   /* Reveal on scroll */
   var revealables = document.querySelectorAll('.reveal');
   if (reduceMotion || !('IntersectionObserver' in window)) {

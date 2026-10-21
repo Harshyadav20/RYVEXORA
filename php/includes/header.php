@@ -65,6 +65,7 @@ $isCurrent = static fn (array $files): string =>
                 </div>
             </div>
 
+            <a class="nav-link<?= nav_state(['formats.php', 'format.php']) ?>" href="formats.php"<?= $isCurrent(['formats.php', 'format.php']) ?>>Formats</a>
             <a class="nav-link<?= nav_state(['process.php']) ?>" href="process.php"<?= $isCurrent(['process.php']) ?>>Process</a>
             <a class="nav-link<?= nav_state(['about.php']) ?>" href="about.php"<?= $isCurrent(['about.php']) ?>>About</a>
             <a class="nav-link<?= nav_state(['contact.php']) ?>" href="contact.php"<?= $isCurrent(['contact.php']) ?>>Contact</a>
@@ -85,6 +86,7 @@ $isCurrent = static fn (array $files): string =>
         <div class="mobile-nav__inner">
             <a href="index.php">Home</a>
             <a href="work.php">Work</a>
+            <a href="formats.php">Formats</a>
             <a href="services.php">Services</a>
             <a href="process.php">Process</a>
             <a href="about.php">About</a>

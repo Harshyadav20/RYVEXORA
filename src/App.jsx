@@ -13,10 +13,12 @@ import Work from './pages/Work.jsx';
 import About from './pages/About.jsx';
 import Process from './pages/Process.jsx';
 import Privacy from './pages/Privacy.jsx';
+import Formats from './pages/Formats.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail.jsx'));
 const WorkDetail = lazy(() => import('./pages/WorkDetail.jsx'));
+const FormatDetail = lazy(() => import('./pages/FormatDetail.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 
 function RouteFallback() {
@@ -45,6 +47,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/formats" element={<Formats />} />
+            <Route path="/formats/:slug" element={<FormatDetail />} />
             <Route path="/work" element={<Work />} />
             <Route path="/work/:slug" element={<WorkDetail />} />
             <Route path="/about" element={<About />} />
