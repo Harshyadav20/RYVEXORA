@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Lightformer } from '@react-three/drei';
-import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
+import { EffectComposer, Bloom, DepthOfField, Vignette } from '@react-three/postprocessing';
 import * as THREE from 'three';
 import { damp, smoothstep } from '../lib/utils.js';
 import { sceneState, setPointer } from './sceneState.js';
@@ -383,6 +383,7 @@ export default function HeroScene({ quality = 'high' }) {
         }}
       >
         <Suspense fallback={null}>
+          <fog attach="fog" args={['#07090d', 10, 26]} />
           <ambientLight intensity={0.4} />
           <directionalLight position={[4, 6, 5]} intensity={2.8} color="#e7efff" />
           <pointLight position={[3.4, 1.4, 2.8]} intensity={26} distance={14} decay={2} color="#36d9ff" />
@@ -410,6 +411,14 @@ export default function HeroScene({ quality = 'high' }) {
               luminanceSmoothing={0.32}
               mipmapBlur
               radius={0.72}
+            />
+            {/* Shallow, camera-locked focus: the far dust softens while the
+                object stays sharp. Kept low-cost and high-quality only. */}
+            <DepthOfField
+              focusDistance={0.11}
+              focalLength={0.045}
+              bokehScale={1.35}
+              height={480}
             />
             <Vignette offset={0.22} darkness={0.72} />
           </EffectComposer>
