@@ -70,7 +70,7 @@ require __DIR__ . '/includes/header.php';
                 <span class="eyebrow">Questions</span>
                 <h2 class="h2" id="process-faq-heading" style="margin-top:16px">Before we start.</h2>
                 <p class="lead">If something is not covered here, ask directly. We would rather answer a hard question now than discover a mismatch in week five.</p>
-                <p style="margin-top:18px"><a class="card__link" href="mailto:<?= e(SITE_EMAIL) ?>">Email the studio →</a></p>
+                <p style="margin-top:18px"><a class="card__link" href="mailto:<?= e(SITE_EMAIL) ?>">Email the studio <span class="arrow" aria-hidden="true"></span></a></p>
             </div>
             <div class="reveal">
                 <?php render_faqs($DATA['faqs']); ?>

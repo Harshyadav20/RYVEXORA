@@ -558,6 +558,23 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .card h3 { font-size: 1.18rem; }
 .card p { color: var(--muted); font-size: 0.86rem; line-height: 1.6; }
 .card__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; }
+.arrow {
+  display: inline-block;
+  width: 0.82em;
+  height: 0.82em;
+  margin-left: 0.34em;
+  vertical-align: -0.04em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.6 8h10.2M8.9 3.7 13.2 8l-4.3 4.3' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.6 8h10.2M8.9 3.7 13.2 8l-4.3 4.3' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.3s var(--ease);
+}
+
+a:hover .arrow,
+.card__link:hover .arrow {
+  transform: translateX(3px);
+}
+
 .card__link { color: var(--text); font-size: 0.8rem; text-decoration: none; }
 .card__link:hover { color: var(--cyan); }
 

@@ -61,7 +61,7 @@ function render_service_card(array $service): void
                     <span class="chip"><?= e($tool) ?></span>
                 <?php endforeach; ?>
             </span>
-            <span class="card__link">Explore →</span>
+            <span class="card__link">Explore <span class="arrow" aria-hidden="true"></span></span>
         </div>
     </a>
     <?php

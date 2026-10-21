@@ -37,7 +37,7 @@ $rest = array_slice($DATA['projects'], 1);
                         </div>
                         <h2><?= e($featured['name']) ?></h2>
                         <p><?= e($featured['summary']) ?></p>
-                        <span class="card__link">View case study →</span>
+                        <span class="card__link">View case study <span class="arrow" aria-hidden="true"></span></span>
                     </div>
                 </a>
 
@@ -51,7 +51,7 @@ $rest = array_slice($DATA['projects'], 1);
                             </div>
                             <h2><?= e($project['name']) ?></h2>
                             <p><?= e($project['summary']) ?></p>
-                            <span class="card__link">View case →</span>
+                            <span class="card__link">View case <span class="arrow" aria-hidden="true"></span></span>
                         </a>
                     <?php endforeach; ?>
                 </div>

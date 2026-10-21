@@ -131,7 +131,7 @@ require __DIR__ . '/includes/header.php';
                 <p><strong style="color:var(--text)">Kickoff</strong><br>After scope and deposit</p>
                 <p><strong style="color:var(--text)">Contact</strong><br><a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></p>
                 <a class="btn btn--block" href="contact.php">Start a project</a>
-                <a class="card__link" href="process.php">See the full process →</a>
+                <a class="card__link" href="process.php">See the full process <span class="arrow" aria-hidden="true"></span></a>
             </aside>
         </div>
     </section>
@@ -145,7 +145,7 @@ require __DIR__ . '/includes/header.php';
                         <span class="card__index">SERVICE <?= e($item['index']) ?></span>
                         <h3><?= e($item['title']) ?></h3>
                         <p><?= e($item['summary']) ?></p>
-                        <span class="card__link">Explore →</span>
+                        <span class="card__link">Explore <span class="arrow" aria-hidden="true"></span></span>
                     </a>
                 <?php endforeach; ?>
             </div>

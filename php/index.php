@@ -23,7 +23,7 @@ require __DIR__ . '/includes/header.php';
                 </p>
                 <div class="btn-row php-hero__actions">
                     <a class="btn" href="services.php">Explore our services</a>
-                    <a class="btn btn--ghost" href="contact.php">Start a project →</a>
+                    <a class="btn btn--ghost" href="contact.php">Start a project <span class="arrow" aria-hidden="true"></span></a>
                 </div>
                 <ul class="php-hero__meta">
                     <li>Senior-led delivery</li>
@@ -86,7 +86,7 @@ require __DIR__ . '/includes/header.php';
                                 <li><?= e($step['number']) ?> — <?= e($step['title']) ?>: <?= e($step['summary']) ?></li>
                             <?php endforeach; ?>
                         </ul>
-                        <a class="card__link" href="process.php">See the full process →</a>
+                        <a class="card__link" href="process.php">See the full process <span class="arrow" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@ require __DIR__ . '/includes/header.php';
                     </div>
                     <h2><?= e($featured['name']) ?></h2>
                     <p><?= e($featured['summary']) ?></p>
-                    <span class="card__link">View case study →</span>
+                    <span class="card__link">View case study <span class="arrow" aria-hidden="true"></span></span>
                 </div>
             </a>
         </div>

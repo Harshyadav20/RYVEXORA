@@ -113,7 +113,7 @@ require __DIR__ . '/includes/header.php';
                 </div>
                 <hr>
                 <p>Have a similar problem in production? The constraints are usually messier than a concept. That is the part we are good at.</p>
-                <a class="card__link" href="mailto:<?= e(SITE_EMAIL) ?>">Discuss your project →</a>
+                <a class="card__link" href="mailto:<?= e(SITE_EMAIL) ?>">Discuss your project <span class="arrow" aria-hidden="true"></span></a>
             </aside>
         </div>
     </section>
