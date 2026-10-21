@@ -10,6 +10,10 @@
  * The dependency is deliberately not in package.json: the PHP edition itself
  * has zero requirements, and this tool is only for local review. Production
  * hosting should use real PHP 8.1+ (see php/README.md).
+ *
+ * Note: the contact form writes `inquiries.jsonl` inside the WebAssembly
+ * filesystem, not to php/storage on disk — the submit flow works end to end,
+ * but nothing is persisted between runs. Real PHP writes to php/storage.
  */
 import http from 'node:http';
 import fs from 'node:fs';
