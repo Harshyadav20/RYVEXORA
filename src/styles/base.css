@@ -12,6 +12,11 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scrollbar-gutter: stable;
+  /* `hidden` on <body> does not clip when <html> is visible, so wide
+     decorations (the marquee track) made every page scroll sideways.
+     `clip` contains them without creating a scroll container, which
+     keeps position: sticky working for the hero scene. */
+  overflow-x: clip;
 }
 
 html,

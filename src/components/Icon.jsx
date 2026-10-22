@@ -24,6 +24,7 @@ const icons = {
     </>
   ),
   'chevron-down': <path d="m6 9 6 6 6-6" />,
+  'chevron-up': <path d="m6 15 6-6 6 6" />,
   'chevron-right': <path d="m9 6 6 6-6 6" />,
   check: <path d="M20 6 9 17l-5-5" />,
   plus: (

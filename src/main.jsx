@@ -11,6 +11,10 @@ import './styles/base.css';
 import './styles/components.css';
 import './styles/home.css';
 import './styles/pages.css';
+import './styles/formats.css';
+import './styles/kit.css';
+import './styles/pay.css';
+import './styles/atelier.css';
 
 import App from './App.jsx';
 

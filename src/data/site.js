@@ -13,9 +13,12 @@ export const site = {
 
 export const nav = [
   { label: 'Work', to: '/work' },
+  { label: 'Formats', to: '/formats' },
+  { label: 'Kit', to: '/kit' },
   { label: 'Services', to: '/services', mega: true },
   { label: 'Process', to: '/process' },
   { label: 'About', to: '/about' },
+  { label: 'Reserve', to: '/pay' },
 ];
 
 export const budgets = [

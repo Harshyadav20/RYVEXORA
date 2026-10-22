@@ -1704,8 +1704,8 @@
 /* ---------------- Page header (inner pages) ---------------- */
 .page-hero {
   position: relative;
-  padding-top: calc(var(--header-h) + clamp(64px, 8vw, 120px));
-  padding-bottom: clamp(48px, 6vw, 88px);
+  padding-top: calc(var(--header-h) + clamp(26px, 3vw, 42px));
+  padding-bottom: clamp(40px, 4.6vw, 64px);
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
@@ -1729,12 +1729,15 @@
   background: radial-gradient(circle, rgba(139, 92, 246, 0.18), transparent 62%);
 }
 
+/* Tight on purpose: the breadcrumb, eyebrow and title are one block of
+   orienting information, and 26px + 20px of gaps turned that block into three
+   separate announcements. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
   font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.1em;
@@ -1757,14 +1760,14 @@
 
 .page-hero__title {
   max-width: 18ch;
-  margin-top: 20px;
+  margin-top: 14px;
   font-size: var(--fs-h1);
   line-height: 0.98;
   letter-spacing: -0.04em;
 }
 
 .page-hero__lead {
-  margin-top: 24px;
+  margin-top: 18px;
   max-width: 60ch;
   font-size: var(--fs-lead);
   color: var(--muted);

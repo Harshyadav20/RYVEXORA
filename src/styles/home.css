@@ -196,12 +196,28 @@
 }
 
 .hero__aside {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 26px;
   padding-bottom: 6px;
   text-align: right;
+  /* The scene is behind this column. A soft local scrim plus a shadow keeps
+     every label readable whatever the shard field happens to be doing, and
+     the labels never have to fight the render for attention. */
+  text-shadow: 0 1px 14px rgba(5, 7, 11, 0.95), 0 1px 3px rgba(5, 7, 11, 0.9);
+}
+
+.hero__aside::before {
+  content: '';
+  position: absolute;
+  /* Oversized and fully feathered: this must read as the scene getting darker
+     toward the corner, never as a panel behind the labels. */
+  inset: -70px -70px -50px -150px;
+  z-index: -1;
+  background: radial-gradient(ellipse 62% 58% at 88% 58%, rgba(5, 7, 11, 0.72) 0%, rgba(5, 7, 11, 0.34) 44%, transparent 74%);
+  pointer-events: none;
 }
 
 .hero__aside-block {
@@ -544,7 +560,9 @@
   line-height: 0.9;
   text-align: center;
   color: transparent;
-  background: linear-gradient(180deg, #f4f7ff 0%, rgba(190, 212, 245, 0.55) 55%, rgba(120, 140, 180, 0.08) 100%);
+  /* Stops stay above the baseline: the previous 100% stop faded to 8% alpha,
+     which erased the bottom half of every glyph. */
+  background: linear-gradient(180deg, #f7fafe 0%, #dbe6f8 58%, #b9c9e4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   opacity: 0;
@@ -1118,4 +1136,98 @@
 /* ---------------- Contact page variant ---------------- */
 .contact-page .contact-section {
   border-top: 0;
+}
+
+/* ---------------- Formats teaser ---------------- */
+.ft-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.ft-item {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding: clamp(20px, 2.4vw, 30px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  background: rgba(9, 13, 20, 0.35);
+  transition: background-color 0.4s ease;
+  overflow: hidden;
+}
+
+.ft-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% 110%, color-mix(in srgb, var(--ft-accent, var(--cyan)) 22%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.ft-item:hover {
+  background: rgba(15, 21, 31, 0.7);
+}
+
+.ft-item:hover::before {
+  opacity: 1;
+}
+
+.ft-item__index {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: var(--ft-accent, var(--cyan));
+}
+
+.ft-item__name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.ft-item__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.ft-item__arrow {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  color: var(--faint);
+  transition: color 0.3s ease, transform 0.4s var(--ease);
+}
+
+.ft-item:hover .ft-item__arrow {
+  color: var(--ft-accent, var(--cyan));
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 900px) {
+  .ft-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .ft-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Detail page shell */
+.fmt-detail {
+  background:
+    radial-gradient(ellipse 60% 40% at 85% 0%, var(--fmt-accent-soft, rgba(54, 217, 255, 0.1)), transparent 62%),
+    var(--bg);
 }

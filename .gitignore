@@ -12,6 +12,5 @@ dist-ssr
 *.log
 npm-debug.log*
 
-# PHP edition runtime data
-php/storage/*.jsonl
-php/storage/*.log
+# Local payment/API scratch output
+.vercel
