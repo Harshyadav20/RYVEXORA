@@ -156,7 +156,7 @@ function NetworkObject({ quality }) {
     }
 
     if (coreLight.current) {
-      coreLight.current.intensity = 8 + open * 34;
+      coreLight.current.intensity = 2 + open * 5;
     }
 
     // Faceted shards orbit and expand outward.
@@ -208,32 +208,34 @@ function NetworkObject({ quality }) {
   });
 
   return (
-    <group ref={group} position={[1.55, 0.12, 0]}>
+    // Lifted and pulled in from the edge: the hero's aside sits in the
+    // bottom-right corner, and the shard field used to sit on top of it.
+    <group ref={group} position={[1.42, 0.5, 0]}>
       <group ref={shardGroup}>
         <mesh ref={shellRef}>
           <sphereGeometry args={[0.96, quality === 'high' ? 64 : 40, quality === 'high' ? 64 : 40]} />
           <meshPhysicalMaterial
-            color="#dbe4f2"
-            metalness={1}
-            roughness={0.16}
-            clearcoat={1}
-            clearcoatRoughness={0.22}
-            envMapIntensity={1.7}
+            color="#b9c6dc"
+            metalness={0.88}
+            roughness={0.32}
+            clearcoat={0.45}
+            clearcoatRoughness={0.4}
+            envMapIntensity={0.62}
           />
         </mesh>
 
         <mesh ref={coreRef}>
           <icosahedronGeometry args={[0.78, 1]} />
           <meshBasicMaterial
-            color="#4f8bff"
+            color="#3f6fd8"
             transparent
-            opacity={0.25}
+            opacity={0.1}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
 
-        <pointLight ref={coreLight} color="#36d9ff" intensity={8} distance={9} decay={2} />
+        <pointLight ref={coreLight} color="#36d9ff" intensity={2} distance={9} decay={2} />
 
         {shards.map((shard, index) => (
           <mesh
@@ -245,11 +247,11 @@ function NetworkObject({ quality }) {
           >
             <icosahedronGeometry args={[0.34, 0]} />
             <meshPhysicalMaterial
-              color={index % 3 === 0 ? '#c9d6ea' : '#aebdd2'}
-              metalness={1}
-              roughness={index % 3 === 0 ? 0.18 : 0.3}
+              color={index % 3 === 0 ? '#aebdd2' : '#93a3bd'}
+              metalness={0.82}
+              roughness={index % 3 === 0 ? 0.34 : 0.46}
               flatShading
-              envMapIntensity={1.5}
+              envMapIntensity={0.55}
             />
           </mesh>
         ))}
@@ -379,23 +381,23 @@ export default function HeroScene({ quality = 'high' }) {
         onCreated={({ gl }) => {
           gl.setClearAlpha(0);
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.toneMappingExposure = 1.05;
+          gl.toneMappingExposure = 0.9;
         }}
       >
         <Suspense fallback={null}>
           <fog attach="fog" args={['#07090d', 10, 26]} />
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[4, 6, 5]} intensity={2.8} color="#e7efff" />
-          <pointLight position={[3.4, 1.4, 2.8]} intensity={26} distance={14} decay={2} color="#36d9ff" />
-          <pointLight position={[-3.6, -2, -1.5]} intensity={22} distance={14} decay={2} color="#8b5cf6" />
-          <spotLight position={[0, 5, -4]} angle={0.7} penumbra={1} intensity={20} color="#246bfd" />
+          <ambientLight intensity={0.32} />
+          <directionalLight position={[4, 6, 5]} intensity={1.6} color="#e7efff" />
+          <pointLight position={[3.4, 1.4, 2.8]} intensity={6} distance={14} decay={2} color="#36d9ff" />
+          <pointLight position={[-3.6, -2, -1.5]} intensity={4.5} distance={14} decay={2} color="#8b5cf6" />
+          <spotLight position={[0, 5, -4]} angle={0.7} penumbra={1} intensity={4} color="#246bfd" />
 
           <Environment resolution={quality === 'high' ? 192 : 96} frames={1}>
-            <Lightformer form="rect" intensity={5} position={[0, 3.5, -6]} scale={[12, 7, 1]} color="#5b8cff" />
-            <Lightformer form="circle" intensity={8} position={[5, 1, 4]} scale={3.4} color="#ffffff" />
-            <Lightformer form="circle" intensity={9} position={[-4.5, 1.5, 2]} scale={3} color="#36d9ff" />
-            <Lightformer form="rect" intensity={5} position={[0, -3.5, 2]} scale={[9, 4, 1]} color="#8b5cf6" />
-            <Lightformer form="rect" intensity={3} position={[0, 2, 6]} scale={[8, 5, 1]} color="#ffffff" />
+            <Lightformer form="rect" intensity={1.1} position={[0, 3.5, -6]} scale={[12, 7, 1]} color="#5b8cff" />
+            <Lightformer form="circle" intensity={1.6} position={[5, 1, 4]} scale={3.4} color="#ffffff" />
+            <Lightformer form="circle" intensity={1.8} position={[-4.5, 1.5, 2]} scale={3} color="#36d9ff" />
+            <Lightformer form="rect" intensity={1.1} position={[0, -3.5, 2]} scale={[9, 4, 1]} color="#8b5cf6" />
+            <Lightformer form="rect" intensity={0.7} position={[0, 2, 6]} scale={[8, 5, 1]} color="#e8f0ff" />
           </Environment>
 
           <NetworkObject quality={quality} />
@@ -406,11 +408,11 @@ export default function HeroScene({ quality = 'high' }) {
         {quality === 'high' && (
           <EffectComposer multisampling={0}>
             <Bloom
-              intensity={0.9}
-              luminanceThreshold={0.35}
-              luminanceSmoothing={0.32}
+              intensity={0.36}
+              luminanceThreshold={0.78}
+              luminanceSmoothing={0.25}
               mipmapBlur
-              radius={0.72}
+              radius={0.6}
             />
             {/* Shallow, camera-locked focus: the far dust softens while the
                 object stays sharp. Kept low-cost and high-quality only. */}

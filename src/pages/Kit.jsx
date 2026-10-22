@@ -139,6 +139,9 @@ export default function Kit() {
                   <article className="kit-starter">
                     <span className="kit-starter__num">{String(index + 1).padStart(2, '0')}</span>
                     <span className="kit-starter__stage" aria-hidden="true" inert>
+                      {/* The wrapper shrinks to the scaled box (scale() alone
+                          keeps the original layout size, which overflowed the
+                          fixed-height stage). */}
                       <span className="kit-starter__scale">
                         <Preview />
                       </span>

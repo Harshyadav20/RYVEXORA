@@ -175,6 +175,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
@@ -228,8 +229,10 @@
 .kit-starter__stage {
   display: grid;
   place-items: center;
-  height: 112px;
-  padding: 16px 10px 8px;
+  /* One height for all six: a 137px card next to a 361px card reads as a
+     bug, not as emphasis. Taller previews scale down to fit (see __scale). */
+  height: 178px;
+  padding: 16px 12px 10px;
   overflow: hidden;
   background:
     radial-gradient(ellipse 90% 70% at 50% 0%, rgba(54, 217, 255, 0.07), transparent 70%),
@@ -239,14 +242,18 @@
 .kit-starter__scale {
   display: block;
   width: 100%;
-  transform: scale(0.62);
-  transform-origin: center;
+  /* `zoom` scales the *layout* box, so a tall component (price tier, inline
+     alert) makes the stage taller instead of spilling out of it. transform +
+     scale() was the previous approach and silently kept the original height,
+     which is what clipped these previews. */
+  zoom: 0.6;
   pointer-events: none;
 }
 
 .kit-starter__meta {
   display: grid;
   gap: 2px;
+  margin-top: auto;
   padding: 10px 12px 12px;
   border-top: 1px solid var(--line);
 }
@@ -368,6 +375,8 @@
 /* Tile */
 .kit-tile {
   position: relative;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--panel-1), var(--panel-2);
@@ -385,8 +394,9 @@
 .kit-tile__stage {
   position: relative;
   display: grid;
+  flex: 1 1 auto;
   place-items: center;
-  height: clamp(170px, 15vw, 206px);
+  min-height: clamp(170px, 15vw, 206px);
   padding: 22px;
   overflow: hidden;
   background:
@@ -1604,7 +1614,8 @@
   }
 
   .kit-tile__stage {
-    height: 168px;
+    min-height: 172px;
+    padding: 18px;
   }
 
   .kit-drawer__panel {
