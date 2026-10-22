@@ -49,6 +49,7 @@ Full instructions are in [`php/README.md`](php/README.md).
 | `/` | `src/pages/Home.jsx` | 3D hero, four-stage scroll story, capability marquee, six services, typography sequence, process rail, featured work, contact |
 | `/services` | `src/pages/Services.jsx` | All six disciplines, engagement models |
 | `/services/:slug` | `src/pages/ServiceDetail.jsx` | Context, deliverables, approach, outcomes, stack, FAQ |
+| `/kit` | `src/pages/Kit.jsx` | Element library: 17 live UI elements, category filter, search, Preview/Code/Info panel |
 | `/formats` | `src/pages/Formats.jsx` | Format library: four vertical compositions, comparison table, honesty note |
 | `/formats/:slug` | `src/pages/FormatDetail.jsx` | One format: full illustrative composition, what we change, what we never do, SEO notes |
 | `/work` | `src/pages/Work.jsx` | Project archive |
@@ -61,6 +62,21 @@ Full instructions are in [`php/README.md`](php/README.md).
 
 Unknown service, format or project slugs render a real "not found" state rather than an
 empty template.
+
+### Element kit
+
+`/kit` is a component registry: every element the site is built from, rendered live
+rather than screenshotted, filterable by category, searchable with `/`, and openable into a
+side panel with **Preview / Code / Info** tabs. The code shown is the JSX that produced the
+preview you are looking at; the Info tab lists the rules the element follows.
+
+17 elements across five categories — Actions (button, icon button, switch), Inputs (text
+field, search, segmented control), Display (metric, tag set, avatar group, price tier,
+meter), Navigation (tabs, breadcrumb, pagination) and Feedback (inline alert, empty state,
+toast).
+
+No install counts, save counts or star counts: those would be invented numbers. See
+[`DESIGN.md` §7b](./DESIGN.md) for the architecture and the nested-button constraint.
 
 ### Format library
 

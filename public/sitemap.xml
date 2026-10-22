@@ -8,6 +8,7 @@
   <url><loc>https://ryvexora.com/services/cold-email</loc><priority>0.8</priority></url>
   <url><loc>https://ryvexora.com/services/saas-development</loc><priority>0.8</priority></url>
   <url><loc>https://ryvexora.com/services/business-automation</loc><priority>0.8</priority></url>
+  <url><loc>https://ryvexora.com/kit</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ryvexora.com/formats</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://ryvexora.com/formats/medical</loc><priority>0.7</priority></url>
   <url><loc>https://ryvexora.com/formats/digital-product</loc><priority>0.7</priority></url>

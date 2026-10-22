@@ -15,6 +15,7 @@ import About from './pages/About.jsx';
 import Process from './pages/Process.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Formats from './pages/Formats.jsx';
+import Kit from './pages/Kit.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail.jsx'));
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/kit" element={<Kit />} />
             <Route path="/formats" element={<Formats />} />
             <Route path="/formats/:slug" element={<FormatDetail />} />
             <Route path="/work" element={<Work />} />

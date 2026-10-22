@@ -57,6 +57,7 @@ src/main.jsx
 ├── home.css         ← home page: hero, scroll story, marquee, words, process, work
 ├── pages.css        ← inner pages: services, work, about, process, contact, CTA, 404
 ├── formats.css      ← format hub, detail page, the four demo compositions
+├── kit.css          ← element registry + the el-* preview primitives
 └── atelier.css      ← ART DIRECTION — supersedes the defaults above
 ```
 
@@ -251,6 +252,74 @@ Every demo brand is fictional and labelled inside the frame. Where a template wo
 
 ---
 
+## 7b. The element kit
+
+`/kit` is a component registry in the 21st.dev pattern: a filterable gallery of the
+actual elements this site is built from, with a detail panel that shows the live element,
+the JSX that produced it, and the rules it follows.
+
+### Why it exists
+
+A format library answers *"what shape is the page?"*. The kit answers the next question
+down: *"what is this button, and why does it look like that?"* It also keeps the studio
+honest — if an element is not good enough to show on its own, it is not good enough to
+hide inside a page.
+
+### Anatomy
+
+| Part | File | What it does |
+| --- | --- | --- |
+| Catalog | `src/data/kit.js` | 17 elements: id, name, category, status, tags, `code`, `notes` |
+| Previews | `src/components/kit/elements.jsx` | One live React preview per element, keyed by id |
+| Tile | `src/pages/Kit.jsx` → `ElementTile` | Preview + name + category, one full-cover labelled button |
+| Detail panel | `src/components/kit/ElementDrawer.jsx` | Preview / Code / Info tabs, focus trap, Escape, scroll lock |
+| Code panel | `src/components/kit/CodeBlock.jsx` | Line numbers, copy button, single-pass highlighter |
+| Styles | `src/styles/kit.css` | Registry layout plus the `el-*` element primitives |
+
+### The nested-button problem (and the fix)
+
+A tile shows a *live* element, and several elements are buttons. A `<button>` may not
+contain a `<button>`, and React will warn about it. The tile is therefore:
+
+```
+<article class="kit-tile">
+  <div class="kit-tile__stage" inert aria-hidden>   ← live preview, not reachable
+  <div class="kit-tile__meta">                      ← name + category
+  <button class="kit-tile__hit">Open {name}</button> ← one labelled target, covers the tile
+</article>
+```
+
+`inert` removes the preview from the accessibility tree *and* from tab order, so the tile
+is a single stop. Interaction happens in the drawer, where the element is rendered alone.
+Do not "fix" this by making the tile a button again.
+
+### The code panel
+
+`highlight()` runs **one** regex pass over the escaped source. An earlier version ran four
+sequential `replace` calls, and the attribute rule then matched `class=` inside the spans
+it had just written — the markup was destroyed and no tokens appeared. If you add a token
+type, add it as another alternative in `TOKEN`, not as a second pass.
+
+Copy uses `navigator.clipboard` with a `document.execCommand` fallback for non-secure
+contexts, and copies the raw string rather than the highlighted DOM.
+
+### Adding an element
+
+1. Add an entry to `kitElements` in `src/data/kit.js` (including its `code`).
+2. Write the preview in `elements.jsx` and register it in `ELEMENT_PREVIEWS`.
+3. Style it with `el-*` classes in `kit.css` — never reuse a page-specific class.
+
+The category counts and the search index are derived from the catalog, so nothing else
+needs touching.
+
+### Deliberately absent
+
+Install counts, save counts, star counts and "used by" logos. They would be invented
+numbers. The only numbers on the page are computable: total elements, categories, and
+dependencies (zero).
+
+---
+
 ## 8. Pointer light (`usePointerGlow`)
 
 `src/hooks/usePointerGlow.js` adds one document-level `pointermove` listener (rAF-throttled) that finds the nearest card and writes `--spot-x` / `--spot-y` onto it. The CSS does the rest.
@@ -312,6 +381,7 @@ If you change a visual rule, change it in both files. The PHP block is written a
 | Restyle the header/footer | §05 |
 | Style a page hero | §08 |
 | Work on the format demos | `src/styles/formats.css` + `src/components/formats/*.jsx` |
+| Add or change a UI element | `src/data/kit.js` + `src/components/kit/elements.jsx` + `kit.css` |
 | Change format copy | `src/data/formats.js` → `npm run content:sync` |
 | Change site copy | `src/data/*.js` (React) / `php/includes/data.php` (PHP, generated) |
 | Add a page | `src/pages/`, then a route in `src/App.jsx`; PHP: a `.php` file + nav entry |
