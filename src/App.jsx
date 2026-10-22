@@ -22,6 +22,7 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail.jsx'));
 const WorkDetail = lazy(() => import('./pages/WorkDetail.jsx'));
 const FormatDetail = lazy(() => import('./pages/FormatDetail.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
+const Pay = lazy(() => import('./pages/Pay.jsx'));
 
 function RouteFallback() {
   return (
@@ -58,6 +59,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/process" element={<Process />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/pay" element={<Pay />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

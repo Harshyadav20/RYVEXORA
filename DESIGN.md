@@ -1,6 +1,6 @@
 # RYVEXORA — Design & UI guide
 
-This document explains **what the interface is made of, why it looks the way it does, and where to change it**. It covers the React site, the PHP edition, and the four-format library.
+This document explains **what the interface is made of, why it looks the way it does, and where to change it**. It covers the site, the four-format library, the element kit and the deposit checkout.
 
 If you only read one section, read [§3 The five rules](#3-the-five-rules) — everything else follows from those.
 
@@ -8,14 +8,17 @@ If you only read one section, read [§3 The five rules](#3-the-five-rules) — e
 
 ## 1. What this is
 
-RYVEXORA is a studio site with two parallel editions that must look identical:
+RYVEXORA is one React application with a deliberate shape: a cinematic home page and a
+deep set of inner pages, all sharing one design system.
 
-| Edition | Entry | Styling | Where |
+| Layer | Entry | Styling | Where |
 | --- | --- | --- | --- |
-| React (primary) | `index.html` → `src/main.jsx` | `src/styles/*.css` | `/` |
-| PHP (mirror, no build step, no dependencies) | `php/index.php` | one standalone file, `php/assets/site.css` | `/php` |
+| Site | `index.html` → `src/main.jsx` | `src/styles/*.css` | `/` |
+| Payments | `api/*.js` → `server/*.js` | none (JSON only) | `/api/*` |
 
-Both editions render the same content, and the PHP data file is **generated** from the React data by `npm run content:sync`. That means content is edited once.
+There is no second edition to keep in sync. Content is edited once, in `src/data/*.js`, and
+the payment catalog in `src/data/payments.js` is imported by both the page and the server so
+a price cannot drift from what is charged.
 
 On top of the site sits the **format library** — four complete example compositions for different kinds of client (clinic, SaaS product, luxury house, creator studio). They are not templates you pick from a menu; they are worked examples of how the same design system answers four different decisions.
 
@@ -58,12 +61,15 @@ src/main.jsx
 ├── pages.css        ← inner pages: services, work, about, process, contact, CTA, 404
 ├── formats.css      ← format hub, detail page, the four demo compositions
 ├── kit.css          ← element registry + the el-* preview primitives
+├── pay.css          ← checkout only: plans, fields, summary, receipt
 └── atelier.css      ← ART DIRECTION — supersedes the defaults above
 ```
 
 **Rule of thumb:** component behaviour lives in the component sheet; *how it looks* lives in `atelier.css`. If you change a value in `atelier.css`, it wins. If you change behaviour (layout structure, a state class, an animation trigger), change the component sheet.
 
-The PHP edition follows the same idea in one file: base styles first, the four format compositions in the middle, and the equivalent art-direction block at the end (search for `Atelier layer — cinematic pass for the PHP edition`).
+`pay.css` is deliberately narrow: it styles one page and nothing else, so checkout work can
+never move an unrelated section. It is loaded *before* `atelier.css` so the art direction
+still wins any shared property (`.btn`, `--panel-*`).
 
 ---
 
@@ -158,7 +164,10 @@ Three states, three jobs:
 | `.btn--ghost` | The alternative | Glass, not an outline: gradient white 6.5% → 1.8%, hairline border, cyan border on hover. |
 | `.arrow-link` | Inline "read more" | Text + arrow that travels 4px diagonal on hover. |
 
-`FormatDetail` previously used a bare `.btn`, which had **no background at all** under the old CSS. The rule `.btn:not(.btn--ghost):not(.btn--quiet)` gives it a skin and also matches the PHP edition, where `.btn` *is* the primary button.
+`FormatDetail` previously used a bare `.btn`, which had **no background at all** under the
+old CSS. The rule `.btn:not(.btn--ghost):not(.btn--quiet)` gives it a skin. `/pay` reuses the
+same bare `.btn` for its submit action, so the checkout inherits the site's one primary
+button rather than inventing a second style.
 
 ### 05 — Chrome
 - Header turns to glass (`rgba(5,7,11,.76)` + 22px blur) once you scroll, and reveals a 1px cyan→violet hairline.
@@ -202,8 +211,6 @@ Type scale, section rhythm and button heights step down at 1100 / 900 / 640px. P
 | `/formats` | `src/pages/Formats.jsx` | The library: principles, four cards, comparison table, honesty note |
 | `/formats/:slug` | `src/pages/FormatDetail.jsx` | One format: facts, the full composition, what we change, what we never do, SEO note, next format |
 
-PHP equivalents: `formats.php`, `format.php?slug=…`.
-
 ### The four formats
 
 | # | Name | Demo brand | Primary ask | What the composition does differently |
@@ -215,7 +222,7 @@ PHP equivalents: `formats.php`, `format.php?slug=…`.
 
 ### Data model
 
-All content for both editions lives in **`src/data/formats.js`**:
+All content lives in **`src/data/formats.js`**:
 
 ```js
 {
@@ -232,13 +239,12 @@ All content for both editions lives in **`src/data/formats.js`**:
 }
 ```
 
-`formatComparison` (the six-row table) and `formatPrinciples` live in the same file so both editions render identical copy.
-
-`npm run content:sync` regenerates `php/includes/data.php` from these exports — **never hand-edit the PHP data file**.
+`formatComparison` (the six-row table) and `formatPrinciples` live in the same file so the hub
+and the detail pages render identical copy.
 
 ### The demo frame
 
-`src/components/formats/DemoFrame.jsx` (PHP: `render_format_demo()` in `php/includes/ui.php`) wraps each composition in:
+`src/components/formats/DemoFrame.jsx` wraps each composition in:
 
 - a labelled browser-chrome bar: `Format NN · Name` + `Illustrative — not a client`;
 - a viewport-height stage that scrolls **inside** the frame;
@@ -333,20 +339,62 @@ Design constraints baked in:
 
 ---
 
-## 9. PHP edition parity
+## 9. The checkout (`/pay`)
 
-The PHP site has no build step and no dependencies, so parity is maintained by hand-written equivalents rather than a shared stylesheet:
+A deposit page, not a price list. It exists so a serious enquiry can become a booked slot
+without a five-email thread, and it is built to be **believable**: every number is either
+real or clearly labelled as a placeholder, and every state tells the truth about itself.
 
-| Concern | React | PHP |
-| --- | --- | --- |
-| Tokens | `atelier.css` §01 | end of `assets/site.css` |
-| Atmosphere | `body::before` soft-light grade | identical |
-| Hero | `.hero__title` | `.php-hero__title` |
-| Primary button | `.btn--primary` | `.btn` (a bare `.btn` is primary here) |
-| Format demos | `src/components/formats/*.jsx` | `php/includes/formats/*.php` |
-| Frame toggle | React state | `data-demo-toggle` + `php/assets/site.js` |
+### Anatomy
 
-If you change a visual rule, change it in both files. The PHP block is written against PHP's own selectors on purpose — copying the React file wholesale would silently miss `.php-hero` and double-skin `.btn`.
+| Block | Job |
+| --- | --- |
+| Hero | One promise ("reserve a start date") plus a three-row trust column: card details never touch the site, payments are server-verified, methods and currency |
+| Gateway notice | The single most important line on the page — see the state table below |
+| Steps 01–03 | Plan, then identity, then pay. The step markers follow the form's actual completion, not a fake progress bar |
+| Plan cards | Native radios styled as rows: name, price, one-line scope, when the slot is held |
+| Fields | Name, receipt email, optional company. Only the two that appear on a receipt are required |
+| Sticky summary | Deposit, currency, processor, **due now**, what is included, refund policy, tax note. The only element that moves as you type |
+| Receipt | Reference, payment ID, method, mode, and what happens next |
+
+### States
+
+| State | What the visitor sees |
+| --- | --- |
+| `loading` | "Checking the payment gateway…" |
+| configured, live | "Payments are live — verified server-side." |
+| configured, test | "Test mode — Razorpay test keys are configured. Nothing is charged to a real card." |
+| not configured | **Gateway not connected** + the two environment variables to set. The pay button stays disabled and an email path carries the same details |
+| API unreachable | Same notice, worded as "did not respond", so a broken deployment is not mistaken for a broken page |
+| cancelled | "Checkout closed. Nothing was charged." |
+| failure | The specific reason from the API (`signature_mismatch`, `payment_not_captured`, …) plus what to do next |
+| paid | Receipt panel, focused for screen readers, with a reference to quote |
+
+A disabled button that does not explain itself is the most common checkout bug. Here the
+button is disabled *and* `aria-describedby` points at the sentence that says why.
+
+### Rules the page keeps
+
+- **The browser never names a price.** `planId` goes up; the amount comes back from
+  `server/pricing.js`. `src/data/payments.js` is imported by both sides so the displayed
+  number and the charged number cannot disagree.
+- **No invented trust.** No "trusted by" logos, no countdown, no fake security seals. The
+  only claims are ones the code enforces: Razorpay hosts the card form, the signature is
+  verified, the payment is re-fetched before success is shown.
+- **No dark patterns.** The deposit is described as refundable before work starts, the
+  "send the brief first" link is as visible as the pay button, and the CTA below the form
+  actively offers not to pay yet.
+- **Checkout script on demand.** `checkout.js` is only requested after a valid submit, so the
+  page costs nothing until someone intends to pay.
+- **One primary action.** Plan selection, fields and summary are quiet surfaces; only the pay
+  button is filled with the brand gradient.
+
+### Adding or changing a deposit
+
+1. Add an entry to `deposits` in `src/data/payments.js` (`id`, `name`, `amount` in paise,
+   `summary`, `includes`, `turnaround`).
+2. Nothing else. The server resolves it, the page renders it, the summary totals it.
+3. Amounts are **paise**: ₹25,000 → `2500000`.
 
 ---
 
@@ -360,6 +408,10 @@ If you change a visual rule, change it in both files. The PHP block is written a
 - The illustrative-brand label is **never hidden** at any breakpoint — mobile drops the decorative window dots instead.
 - `prefers-reduced-motion` disables the drifting hero light, reveal transitions and pointer light.
 - Every interaction is a real `<button>` / `<a>` with `aria-expanded`, `aria-current` or `aria-label` as appropriate.
+- `/pay` uses native radios in a labelled group, `aria-invalid` + `aria-describedby` on each
+  field with an error, one `role="status"` live region for checkout progress, and moves focus
+  to the receipt on success.
+- Checkout copy is written to be understood without colour: errors are words, not red borders.
 
 **Performance**
 
@@ -374,7 +426,7 @@ If you change a visual rule, change it in both files. The PHP block is written a
 
 | I want to… | Edit |
 | --- | --- |
-| Recolour the site | `src/styles/atelier.css` §01, then the PHP block |
+| Recolour the site | `src/styles/atelier.css` §01 |
 | Make headings bigger/smaller | `--fs-hero`, `--fs-h2` in §01 |
 | Adjust light and depth | §02 (atmosphere) and §06 (surfaces) |
 | Change a button's shape or glow | §04 |
@@ -382,9 +434,12 @@ If you change a visual rule, change it in both files. The PHP block is written a
 | Style a page hero | §08 |
 | Work on the format demos | `src/styles/formats.css` + `src/components/formats/*.jsx` |
 | Add or change a UI element | `src/data/kit.js` + `src/components/kit/elements.jsx` + `kit.css` |
-| Change format copy | `src/data/formats.js` → `npm run content:sync` |
-| Change site copy | `src/data/*.js` (React) / `php/includes/data.php` (PHP, generated) |
-| Add a page | `src/pages/`, then a route in `src/App.jsx`; PHP: a `.php` file + nav entry |
+| Change format copy | `src/data/formats.js` |
+| Change site copy | `src/data/*.js` |
+| Change a deposit or its copy | `src/data/payments.js` |
+| Restyle the checkout | `src/styles/pay.css` |
+| Change the payment flow | `src/lib/checkout.js` (browser) + `api/*.js`, `server/*.js` (server) |
+| Add a page | `src/pages/`, then a route in `src/App.jsx` and `src/data/site.js` for nav |
 
 ---
 
@@ -392,27 +447,41 @@ If you change a visual rule, change it in both files. The PHP block is written a
 
 ```bash
 npm install            # once
-npm run dev            # React site        → http://localhost:5173
-npm run php:preview    # PHP edition       → http://localhost:8080
-npm run build          # production build  → dist/
-npm run content:sync   # React data → php/includes/data.php
-npm run qa:php         # render every PHP page and assert its content
+npm run dev            # site + /api functions → http://localhost:5173
+npm run build          # production build     → dist/
+npm run preview        # serve dist/
+npm run lint           # eslint src/
 ```
 
-`npm run qa:php` needs the optional WebAssembly PHP runtime:
+`npm run dev` mounts the real handlers from `api/` through `tools/dev-api.mjs`, so
+`/api/payment-config` answers locally. Without Razorpay keys it answers "not configured" —
+which is exactly what the page must handle, so that state is the easiest one to test.
 
-```bash
-npm i --no-save @php-wasm/node
-```
+Verified in this environment:
 
-It renders all pages for real and asserts 142 content properties, including one per format that the page shows **only its own** demo — this catches the class of bug where a shared include reuses a template variable and overwrites a detail page.
+- **API** — 29 assertions against the handlers with mocked request/response objects:
+  validation, unknown plans, prototype keys, rate limiting, body caps, mode derivation,
+  signature verification (valid, tampered, wrong order, short, empty), 503 when unconfigured.
+- **Checkout UI** — 34 assertions in jsdom: degraded state, test-mode banner, plan switching
+  and totals, disabled-to-enabled transition, `create-order` receiving a plan id and no
+  amount, Checkout opened with the server's amount, receipt after verification, honest
+  failure on a bad signature, offline API.
+- **Routes** — 13 routes mount with exactly one `h1`, no duplicate ids, no nested buttons and
+  zero console errors.
 
-The CSS itself is validated with [css-tree](https://github.com/csstree/csstree): 0 parse errors and 0 invalid declarations across all seven stylesheets. The only flagged values are the pre-existing `@font-face` weight ranges (`font-weight: 300 700`), which are valid CSS Fonts 4 that the lexer does not model.
+The CSS is validated with [css-tree](https://github.com/csstree/csstree): 0 parse errors and
+0 invalid declarations across all nine stylesheets. Undefined custom properties reported by
+that pass (`--spot-x`, `--gx`, `--fmt-accent`, …) are written at runtime by JS; every value
+`pay.css` uses is defined in `tokens.css` or `atelier.css`.
 
 ---
 
 ## 13. Known limits
 
 - **No rendered screenshots in this environment.** There is no headless browser in the build sandbox, so visual changes are verified structurally (markup, CSS validity, contrast maths, runtime errors) and then reviewed by eye on the preview. If a change looks wrong on your screen, name the page and element — do not assume the harness caught it.
-- **Two stylesheets, one design.** React and PHP are kept in sync manually; nothing enforces parity. A `visual regression` script would be the honest next step if this grows.
+- **Payments stop at verification.** There is no webhook, ledger, invoice or receipt email. A
+  payment that completes while the tab is closed is not recorded here; reconcile in the
+  Razorpay dashboard and add a `payment.captured` webhook before using this for accounting.
+- **Deposit figures are placeholders.** They are labelled as such in `src/data/payments.js`
+  and must be replaced with the studio's real policy before taking live money.
 - **The format demos are illustrations**, not production templates. They demonstrate hierarchy and asks; they are not wired to booking, payments or CMS.

@@ -165,7 +165,7 @@ export const kitElements = [
     status: 'Base',
     summary: 'Short labels for stack, status or filters. Mono, uppercase, generous tracking.',
     tags: ['label', 'filter'],
-    code: `<TagSet items={['React', 'Vite', 'Three.js', 'PHP']} />
+    code: `<TagSet items={['React', 'Vite', 'Three.js', 'GSAP']} />
 
 <TagSet
   variant="outline"

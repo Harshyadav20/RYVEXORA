@@ -18,6 +18,7 @@ export const nav = [
   { label: 'Services', to: '/services', mega: true },
   { label: 'Process', to: '/process' },
   { label: 'About', to: '/about' },
+  { label: 'Reserve', to: '/pay' },
 ];
 
 export const budgets = [

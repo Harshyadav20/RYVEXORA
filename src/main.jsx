@@ -13,6 +13,7 @@ import './styles/home.css';
 import './styles/pages.css';
 import './styles/formats.css';
 import './styles/kit.css';
+import './styles/pay.css';
 import './styles/atelier.css';
 
 import App from './App.jsx';

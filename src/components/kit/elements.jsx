@@ -213,7 +213,7 @@ function TagPreview() {
   return (
     <div className="el-stack">
       <div className="el-tags">
-        {['React', 'Vite', 'Three.js', 'PHP'].map((tag) => (
+        {['React', 'Vite', 'Three.js', 'GSAP'].map((tag) => (
           <span className="el-tag" key={tag}>{tag}</span>
         ))}
       </div>
