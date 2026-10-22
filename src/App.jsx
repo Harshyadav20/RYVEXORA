@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 import ScrollProgressBar from './components/ScrollProgressBar.jsx';
 import ScrollManager from './components/ScrollManager.jsx';
 import { useSmoothScroll } from './hooks/useSmoothScroll.js';
+import usePointerGlow from './hooks/usePointerGlow.js';
 
 import Home from './pages/Home.jsx';
 import Services from './pages/Services.jsx';
@@ -32,6 +33,7 @@ function RouteFallback() {
 
 export default function App() {
   useSmoothScroll();
+  usePointerGlow();
 
   return (
     <>

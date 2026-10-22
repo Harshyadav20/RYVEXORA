@@ -89,22 +89,44 @@ Tokens live in `src/styles/tokens.css`; the PHP edition mirrors them at the top 
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--bg` | `#07090D` | Page background |
+| `--bg` | `#05070B` | Page background |
 | `--surface` | `#111722` | Cards, panels |
 | `--blue` | `#246BFD` | Primary accent, CTA |
 | `--violet` | `#8B5CF6` | Secondary accent |
 | `--cyan` | `#36D9FF` | Highlights, links, focus |
-| `--text` | `#F4F7FF` | Body copy |
-| `--muted` | `#A2ADBF` | Secondary copy |
-| `--faint` | `#7C8AA1` | Meta, labels |
+| `--text` | `#F6F8FC` | Body copy |
+| `--muted` | `#AAB6C8` | Secondary copy |
+| `--faint` | `#7F8CA1` | Meta, labels |
 
 Type: **Space Grotesk** (display), **Inter** (body), **JetBrains Mono** (labels, data).
 All three are self-hosted through `@fontsource-variable` — no Google Fonts request, no
 third-party tracking.
 
-The layout uses a 1280px shell with fluid gutters (`clamp(20px, 4.4vw, 64px)`), a
-`clamp()`-based type scale, hairline borders at 9% white, and one restrained gradient
+The layout uses a 1280px shell with fluid gutters (`clamp(20px, 4.6vw, 72px)`), a
+`clamp()`-based type scale, hairline borders at 8.5% white, and one restrained gradient
 language (blue → violet → cyan). There are no white sections.
+
+### The atelier layer
+
+`src/styles/atelier.css` is loaded last and carries the art direction. It is deliberately
+a separate layer from the component sheets, so the component CSS stays reusable and the
+cinematic decisions sit in one readable file:
+
+- **Atmosphere** — a single fixed colour grade (`body::before`, soft-light) lights the page
+  from above and falls off at the edges. Section-level light is limited to heroes and
+  closing bands: one source per screen.
+- **Amplitude** — display type is larger and tighter (`--fs-hero` up to 9.4rem), body copy
+  brighter (`--muted` at 7.4:1 on `--bg`), section rhythm wider (`--section-y`).
+- **Surfaces** — panels share one recipe: a white-to-transparent gradient, a 1px top-edge
+  catch, a soft ambient shadow, and a pointer-tracked light (`usePointerGlow`, one
+  delegated listener, disabled for touch and reduced-motion users).
+- **Restraint** — glow marks hierarchy rather than decorating every edge. The seam grids
+  (`.principles-grid`, `.contact-next`) keep their shared hairlines and never get per-cell
+  borders.
+
+The PHP edition carries the equivalent block at the end of `php/assets/site.css`, written
+against its own selectors (`.php-hero`, `.btn`-as-primary) so both editions read as one
+studio.
 
 ---
 

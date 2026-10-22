@@ -12,6 +12,7 @@ import './styles/components.css';
 import './styles/home.css';
 import './styles/pages.css';
 import './styles/formats.css';
+import './styles/atelier.css';
 
 import App from './App.jsx';
 
