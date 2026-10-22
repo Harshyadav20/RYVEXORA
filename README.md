@@ -15,6 +15,7 @@ studio in Mumbai. Two complete, self-contained editions share one design system:
 - [Quick start](#quick-start)
 - [Pages](#pages)
 - [Design system](#design-system)
+- [Design & UI guide (DESIGN.md)](./DESIGN.md) — the full art direction, component recipes and where to change things
 - [The 3D and motion layer](#the-3d-and-motion-layer)
 - [Performance budget](#performance-budget)
 - [Accessibility](#accessibility)
@@ -107,6 +108,10 @@ The layout uses a 1280px shell with fluid gutters (`clamp(20px, 4.6vw, 72px)`), 
 language (blue → violet → cyan). There are no white sections.
 
 ### The atelier layer
+
+> **Full write-up:** [`DESIGN.md`](./DESIGN.md) explains the direction, every token
+> change, the component recipes, the format library's data model and where to change
+> each thing. This section is the summary.
 
 `src/styles/atelier.css` is loaded last and carries the art direction. It is deliberately
 a separate layer from the component sheets, so the component CSS stays reusable and the
